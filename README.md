@@ -1,4 +1,4 @@
-# 🖥️ **MetaBuild** - Smart PC Build Generator
+# **MetaBuild** - Smart PC Build Generator
 
 Have you ever wanted to build your own personal computer but didn’t know where to start or which parts to choose?  
 **MetaBuild** takes the guesswork out of PC building and is the ideal tool to get you started on your quest.
@@ -38,7 +38,7 @@ This repo contains both the front and back end for ease of access and demonstrat
 ---
 
 ## 📝 Notes
-> ⚠️ Countires are limited by the Pcpartpicker API and are the following: Australia, Austria, Belgium, Canada, Czech Republic, Denmark, Finland, France, Germany, Hungary, Ireland, Italy, Netherlands, New Zealand, Norway, Portugal, Romania, Saudi Arabia, Slovakia, Spain, Sweden, United Kingdom, United States.
+> Countires are limited by the Pcpartpicker API and are the following: Australia, Austria, Belgium, Canada, Czech Republic, Denmark, Finland, France, Germany, Hungary, Ireland, Italy, Netherlands, New Zealand, Norway, Portugal, Romania, Saudi Arabia, Slovakia, Spain, Sweden, United Kingdom, United States.
 
 > Credit to Matyáš Cimbulka for developing the Pcpartpicker API; this tool would not have been possible without it.
 > You can find it at https://apify.com/matyascimbulka/pcpartpicker-scraper.
