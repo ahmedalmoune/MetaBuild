@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 
 # General constraints
 kGenericMaxLength = 50
-kLongMaxLength    = 1000     # for generic string that might be bigger than 100 characters long e.g. links
+kLongMaxLength    = 2000     # for generic string that might be bigger than 100 characters long e.g. links
 kPPPIdLength      = 6        # pcpartpicker Id
 kMinPrice         = 0
 kMaxPrice         = 2000000 # max price for a part (2M Hungarian Forint ~= $6000 usd)
