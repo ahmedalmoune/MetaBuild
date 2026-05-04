@@ -6,14 +6,11 @@
 */
 
 .page {
-   --button-primary-hover: #f2f2f2;
-/*
-  display: grid;
-  grid-template-rows: 20px 1fr 20px; */
-  /* align-items: center; */
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
   min-height: 100dvh;
-  /* padding-block: 1%; */
   padding-inline: 5%;
   font-family: var(--font-geist-sans);
   font-size: small;
@@ -21,19 +18,17 @@
 
 .buildForm {
   margin-top: 50px;
-  margin-bottom: 50px;
   display: flex;
-  /* width: 100%; */
-  max-width: 900px;
   flex-direction: column;
+  max-width: 900px;
   gap: 10px;
-  grid-row-start: 2;
-  background-color: #f8f9fa;     
-  padding: 30px;                 
-  border-radius: 10px;           
   box-shadow: 4px 6px 0px #0000001a;
   border: 2px solid #6b6767e1; 
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  padding: 30px;
 }
+
 /* 
 @media (max-width: 600px) {
 
@@ -43,8 +38,6 @@
   }
 
 } */
-
-
 
 
 .purposeRadioCard {
@@ -57,7 +50,7 @@
 }
 
 .resolutionRadioCard:hover, .purposeRadioCard:hover {
-    background-color: var(--button-primary-hover);
+    background-color: #f2f2f2;
 }
 
 .growOnHover {

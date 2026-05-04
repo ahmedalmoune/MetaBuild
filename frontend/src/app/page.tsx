@@ -12,7 +12,7 @@ import PurposeRadios from "@/components/build-form/purpose-radios";
 import ResolutionRadios from "@/components/build-form/resolution-radios";
 import FeaturesCheckboxes from "@/components/build-form/features-checkboxes";
 import BuildButton from "@/components/build-form/build-button";
-import { handleSubmit } from "@/utils/utlis";
+import { handleSubmit } from "@/utils/utils";
 
 export default function Home() {
   return (
@@ -21,7 +21,7 @@ export default function Home() {
       {/* Build Form */}
       <div className={styles.buildForm}>
         <h1 className="text-center display-6 fw-bold mb-4">MetaBuild PC Builder</h1>
-        <form style={{display: 'contents'}} onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <BudgetSlider />
           <PurposeRadios />
           <ResolutionRadios />

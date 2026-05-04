@@ -39,6 +39,14 @@ a {
   color: inherit;
 }
 
+label {
+  cursor: text;
+}
+
+form {
+  display: contents;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

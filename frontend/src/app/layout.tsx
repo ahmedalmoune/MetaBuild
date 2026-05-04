@@ -10,6 +10,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapClient from '@/utils/bootstrapclient';
+import { META } from '@/constants/general';
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -24,8 +25,8 @@ const geistMono = Geist_Mono({
 
 // Metadata for the SEO
 export const metadata: Metadata = {
-  title: "MetaBuild",
-  description: "PC builder app by Ahmed Almoune",
+  title: META.APP_NAME,
+  description: META.APP_DESCRIPTION,
 };
 
 export default function RootLayout({
@@ -40,8 +41,8 @@ export default function RootLayout({
 
         <footer className="text-center pb-4"> 
           <span className="bg-secondary px-2 py-1 rounded text-white"> 
-            Made by <a href="https://ahmed-almouna.com" target="_blank" rel="noopener noreferrer" 
-            className="text-white"> Ahmed A</a>
+            Made by <a href={META.AUTHOR_URL} target="_blank" rel="noopener noreferrer" 
+            className="text-white"> {META.AUTHOR}</a>
           </span> 
         </footer>
         <BootstrapClient />
