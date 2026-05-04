@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "@/ui/page.module.css";
+import styles from "@/styles/page.module.css";
 
 export default function PurposeRadios() {
     return (

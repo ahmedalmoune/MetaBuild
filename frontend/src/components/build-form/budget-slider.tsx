@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import {formatCurrency} from '@/common/utlis'
+import {formatCurrency} from '@/utils/utlis'
 
 export default function Slider() {
     
