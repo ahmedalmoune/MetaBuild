@@ -29,34 +29,18 @@
   padding: 30px;
 }
 
-/* 
-@media (max-width: 600px) {
-
-
-  .buildForm ol {
-    text-align: center;
-  }
-
-} */
-
-
-.purposeRadioCard {
+.radioCard {
   cursor: pointer;
   max-width: 500px; /* Note: maybe delete */
+  
 }
-
-.resolutionRadioCard {
-  cursor: pointer;
-}
-
-.resolutionRadioCard:hover, .purposeRadioCard:hover {
+.radioCard:hover {
   background-color: #f2f2f2;
 }
 
 .growOnHover {
   transition: transform 0.2s ease-in-out;
 }
-
 .growOnHover:hover {
   transform: scale(1.04);
 }

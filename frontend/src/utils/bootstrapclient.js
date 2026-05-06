@@ -1,3 +1,10 @@
+/*
+* File: bootstrapclient.js
+* Description: Loads Bootstrap client side script.
+* Author: Internet
+* Date: 5/3/2026
+*/
+
 "use client"
 
 import { useEffect } from 'react';

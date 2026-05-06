@@ -5,12 +5,12 @@
 * Date: 5/3/2026
 */
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #202020;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
     --background: #202020;
     --foreground: #ffffff;
@@ -28,8 +28,8 @@ html {
 }
 
 body {
-  color: var(--foreground);
-  background: radial-gradient(var(--foreground) 1px, var(--background) 0px) 0px 0px / 15px 15px;
+  color: #202020;
+  background: radial-gradient(#202020 1px, #ffffff 0px) 0px 0px / 15px 15px;
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -51,6 +51,8 @@ form {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  /* Text related */
   overflow-wrap: anywhere;
   hyphens: auto;
   text-wrap: pretty;

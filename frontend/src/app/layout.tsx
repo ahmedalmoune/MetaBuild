@@ -22,18 +22,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
-// Metadata for the SEO
+// Metadata for SEO
 export const metadata: Metadata = {
   title: META.APP_NAME,
   description: META.APP_DESCRIPTION,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -45,6 +40,7 @@ export default function RootLayout({
             className="text-white"> {META.AUTHOR}</a>
           </span> 
         </footer>
+
         <BootstrapClient />
       </body>
     </html>

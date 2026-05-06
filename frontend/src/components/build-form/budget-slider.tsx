@@ -11,15 +11,14 @@ import {formatCurrency} from '@/utils/utils'
 import { BUDGET } from '@/constants/build-preferences'
 
 export default function BudgetSlider() {
-
-  const [budget, setBudget] = useState<number>(BUDGET.default);
+  
+  const [budget, setBudget] = useState(BUDGET.default);
   function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
     setBudget(Number(event.currentTarget.value));
   }
 
-
   return (
-    <>
+    <div className="mb-4">
       <label htmlFor="budgetSlider" className="fs-6 fw-semibold align-self-start">
         Budget: {formatCurrency.format(budget)}
       </label>
@@ -27,10 +26,10 @@ export default function BudgetSlider() {
         step={BUDGET.steps} id='budgetSlider' name='budget' onChange={handleInput} value={budget} 
       />
       
-      <span className='d-flex justify-content-between mb-4'>
+      <span className='d-flex justify-content-between'>
         <span className='text-muted'>{formatCurrency.format(BUDGET.min)}</span>
         <span className='text-muted'>{formatCurrency.format(BUDGET.max)}</span>
       </span>
-    </>
+    </div>
   );
 }
