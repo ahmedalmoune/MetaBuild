@@ -11,7 +11,7 @@
   align-items: center;
   gap: 50px;
   min-height: 100dvh;
-  padding-inline: 5%;
+  padding-inline: 5vw;
   font-family: var(--font-geist-sans);
   font-size: small;
 }
@@ -41,8 +41,8 @@
 
 
 .purposeRadioCard {
-    cursor: pointer;
-    min-width: 300px;
+  cursor: pointer;
+  max-width: 500px; /* Note: maybe delete */
 }
 
 .resolutionRadioCard {
@@ -50,7 +50,7 @@
 }
 
 .resolutionRadioCard:hover, .purposeRadioCard:hover {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .growOnHover {
