@@ -8,24 +8,24 @@
 'use client';
 import styles from "@/styles/page.module.css";
 import BudgetSlider from "@/components/build-form/budget-slider";
-import RadioCardGroup from "@/components/build-form/radio-cards-group";
-import FeaturesCheckboxes from "@/components/build-form/features-checkboxes";
-import BuildButton from "@/components/build-form/build-button";
+import OptionsCardsGroup from "@/components/build-form/options-cards-group";
+import GenerateButton from "@/components/build-form/generate-button";
 import { handleSubmit } from "@/utils/utils";
-import { PURPOSES, RESOLUTIONS } from "@/constants/build-preferences";
+import { PURPOSES, RESOLUTIONS, FEATURES } from "@/constants/build-preferences";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      
       {/* Build Form */}
       <div className={styles.buildForm}>
         <h1 className="text-center display-6 fw-bold mb-4">MetaBuild PC Builder</h1>
         <form onSubmit={handleSubmit}>
           <BudgetSlider />
-          <RadioCardGroup heading="Primary Purpose" cards={PURPOSES} />
-          <RadioCardGroup heading="Resolution" cards={RESOLUTIONS} />
-          <FeaturesCheckboxes />
-          <BuildButton />
+          <OptionsCardsGroup CardsGroup={PURPOSES} />
+          <OptionsCardsGroup CardsGroup={RESOLUTIONS} />
+          <OptionsCardsGroup CardsGroup={FEATURES} />
+          <GenerateButton />
         </form>
       </div>
 

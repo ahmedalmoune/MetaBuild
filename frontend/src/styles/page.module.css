@@ -29,12 +29,11 @@
   padding: 30px;
 }
 
-.radioCard {
+.optionsCard {
   cursor: pointer;
   max-width: 500px; /* Note: maybe delete */
-  
 }
-.radioCard:hover {
+.optionsCard:hover {
   background-color: #f2f2f2;
 }
 

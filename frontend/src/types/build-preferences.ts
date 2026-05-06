@@ -12,12 +12,18 @@ export interface BudgetProps {
   default: number;
 }
 
-// Represents the variables a radio card needs
-export type RadioCardProps = {
-  name: string;
+// Represents the variables of a radio or checkbox card
+export type CardProps = {
   id: string;
   value: string;
   title: string;
   description: string;
   default?: boolean;
 }
+
+export type CardsGroupProps = {
+  type: "checkbox" | "radio";
+  heading: string;
+  name: string;
+  cards: CardProps[];
+};
