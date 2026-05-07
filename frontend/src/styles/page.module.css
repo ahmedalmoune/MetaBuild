@@ -38,7 +38,7 @@
 }
 
 .growOnHover {
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s;
 }
 .growOnHover:hover {
   transform: scale(1.04);

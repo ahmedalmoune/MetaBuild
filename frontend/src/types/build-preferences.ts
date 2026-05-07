@@ -27,3 +27,10 @@ export type CardsGroupProps = {
   name: string;
   cards: CardProps[];
 };
+
+export interface BuildFormProps {
+  budget: number;
+  purpose: string;
+  resolution: string;
+  features: string[];
+}

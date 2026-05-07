@@ -1,22 +1,40 @@
+/*
+* File: utils.ts
+* Description: Utility/helper functions for the app.
+* Author: Ahmed Almoune
+* Date: 5/3/2026
+*/
+
+import { BuildFormProps } from "@/types/build-preferences";
+
 export const formatCurrency = new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD',
-    maximumFractionDigits: 0,
+  style: 'currency',
+  currency: 'CAD',
+  maximumFractionDigits: 0,
 });
 
-export function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-    const formData = new FormData(event.target as HTMLFormElement);
-  
-    const features = formData.getAll("Features");
-    const data = {
-      ...Object.fromEntries(formData.entries()),
-      Features: features, // overwrite with all features
-    };
-    
-    fetch('/api/build', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' },
-    });
+export async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+  event.preventDefault();
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  const payload: BuildFormProps = {
+    budget: Number(formData.get("budget")) as BuildFormProps["budget"],
+    purpose: formData.get("purpose") as BuildFormProps["purpose"],
+    resolution: formData.get("resolution") as BuildFormProps["resolution"],
+    features: formData.getAll("features") as BuildFormProps["features"],
+  };
+
+  alert(JSON.stringify(payload));
+
+  const res = await fetch("/api/build", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) throw new Error("Request failed");
+  const data = await res.json();
+  console.log("API response:", data);
 }

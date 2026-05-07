@@ -16,7 +16,7 @@ import { PURPOSES, RESOLUTIONS, FEATURES } from "@/constants/build-preferences";
 export default function Home() {
   return (
     <div className={styles.page}>
-      
+
       {/* Build Form */}
       <div className={styles.buildForm}>
         <h1 className="text-center display-6 fw-bold mb-4">MetaBuild PC Builder</h1>
@@ -33,8 +33,6 @@ export default function Home() {
       <div>
         <p>Results will be displayed here</p>
       </div>
-
-     
 
 
     </div>
