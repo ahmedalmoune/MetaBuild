@@ -11,6 +11,7 @@ import "@/styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapClient from '@/utils/bootstrapclient';
 import { META } from '@/constants/general';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -32,7 +33,9 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main>{children}</main>
+        <NuqsAdapter>
+          <main>{children}</main>
+        </NuqsAdapter>
 
         <footer className="text-center pb-4"> 
           <span className="bg-secondary px-2 py-1 rounded text-white"> 
