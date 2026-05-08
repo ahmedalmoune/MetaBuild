@@ -7,29 +7,39 @@
 */
 
 'use client';
-
-import { CardsGroupProps } from "@/types/build-preferences"; 
+import { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
 import styles from "@/styles/page.module.css";
-import { useBuildQueryState } from "@/utils/use-build-query-state";
+import { useBuildQueryState, getQueryValue } from "@/utils/use-build-query-state";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {
+  
   const [queryState, setQueryState] = useBuildQueryState();
 
-  function handleChange(cardValue: string, checked: boolean) {
-    if (CardsGroup.type === "radio") {
-      if (CardsGroup.name === "purpose") {
-        setQueryState({ purpose: cardValue });
-      } else if (CardsGroup.name === "resolution") {
-        setQueryState({ resolution: cardValue });
-      }
+  function handleChange(cardValue: CardProps['value'], checked: boolean) {
+    if (CardsGroup.type === 'radio') {
+      setQueryState({ [CardsGroup.name]: cardValue });
       return;
     }
 
-    const nextFeatures = checked
-      ? [...new Set([...queryState.features, cardValue])]
-      : queryState.features.filter((feature) => feature !== cardValue);
+    // Handle checkboxes e.g. special features
+    const checkboxSet = new Set(getQueryValue<string[]>(queryState, CardsGroup.name));
+    if (checked) {
+      checkboxSet.add(cardValue);
+    } else {
+      checkboxSet.delete(cardValue);
+    }
+    const newCheckboxSet = Array.from(checkboxSet);
 
-    setQueryState({ features: nextFeatures });
+    setQueryState({ [CardsGroup.name]: newCheckboxSet });
+  }
+
+
+
+  function isCardChecked(cardValue: CardProps['value']) {
+    if (CardsGroup.type === 'radio') {
+      return getQueryValue<string>(queryState, CardsGroup.name) === cardValue;
+    }
+    return getQueryValue<string[]>(queryState, CardsGroup.name).includes(cardValue);
   }
 
   return (
@@ -45,10 +55,7 @@ export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupP
               <div className="form-check me-2">
                 <input className="form-check-input" type={CardsGroup.type} name={CardsGroup.name} value={card.value} 
                   id={card.id}
-                  checked={CardsGroup.type === "radio"
-                    ? (CardsGroup.name === "purpose" ? queryState.purpose === card.value : queryState.resolution === card.value)
-                    : queryState.features.includes(card.value)
-                  }
+                  checked={isCardChecked(card.value)}
                   onChange={(event) => handleChange(card.value, event.currentTarget.checked)}
                 />
               </div>

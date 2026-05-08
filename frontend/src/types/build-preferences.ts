@@ -1,11 +1,12 @@
 /*
 * File: build-preferences.ts
-* Description: Build preferences types.
+* Description: Types for build preferences.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
 */
 
 export interface BudgetProps {
+  name: string;
   min: number;
   max: number;
   steps: number;

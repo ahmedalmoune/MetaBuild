@@ -3,6 +3,9 @@
 * Description: Homepage of the app where the user can customize build preferences, generate builds, and view results.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
+* TODO: Add locale setting that ties to format currency,
+* Look into adding error handling
+* Add client side validation for budget, etc.
 */
 
 'use client';

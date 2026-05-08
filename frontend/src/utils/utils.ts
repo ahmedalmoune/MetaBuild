@@ -6,6 +6,7 @@
 */
 
 import { BuildFormProps } from "@/types/build-preferences";
+import { API_ENDPOINT } from "@/constants/general";
 
 export const formatCurrency = new Intl.NumberFormat('en-CA', {
   style: 'currency',
@@ -28,7 +29,7 @@ export async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
 
   alert(JSON.stringify(payload));
 
-  const res = await fetch("/api/build", {
+  const res = await fetch(API_ENDPOINT.baseUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

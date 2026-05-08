@@ -25,8 +25,8 @@ const geistMono = Geist_Mono({
 
 // Metadata for SEO
 export const metadata: Metadata = {
-  title: META.APP_NAME,
-  description: META.APP_DESCRIPTION,
+  title: META.appName,
+  description: META.appDescription,
 };
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
@@ -39,8 +39,8 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
 
         <footer className="text-center pb-4"> 
           <span className="bg-secondary px-2 py-1 rounded text-white"> 
-            Made by <a href={META.AUTHOR_URL} target="_blank" rel="noopener noreferrer" 
-            className="text-white"> {META.AUTHOR}</a>
+            Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
+            className="text-white"> {META.author}</a>
           </span> 
         </footer>
 

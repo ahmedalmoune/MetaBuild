@@ -13,17 +13,17 @@ import { useBuildQueryState } from '@/utils/use-build-query-state';
 export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();
 
-  function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    setQueryState({ budget: Number(event.currentTarget.value) });
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setQueryState({ [BUDGET.name]: Number(event.currentTarget.value) });
   }
 
   return (
     <div className="mb-4">
       <label htmlFor="budgetSlider" className="fs-6 fw-semibold align-self-start">
-        Budget: {formatCurrency.format(queryState.budget)}
+        Budget: {formatCurrency.format(Number(queryState[BUDGET.name]))}
       </label>
-      <input type='range' className='form-range' min={BUDGET.min} max={BUDGET.max} 
-        step={BUDGET.steps} id='budgetSlider' name='budget' onChange={handleInput} value={queryState.budget} 
+      <input type='range' className='form-range' min={BUDGET.min} max={BUDGET.max} step={BUDGET.steps}
+        id='budgetSlider' name={BUDGET.name} onChange={handleChange} value={queryState[BUDGET.name]} 
       />
       
       <span className='d-flex justify-content-between'>

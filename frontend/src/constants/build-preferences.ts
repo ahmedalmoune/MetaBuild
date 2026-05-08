@@ -8,6 +8,7 @@
 import { BudgetProps, CardsGroupProps } from "@/types/build-preferences";
 
 export const BUDGET: BudgetProps = {
+  name: "budget", // name for the form field & URL query param
   min: 500,
   max: 3000,
   steps: 50,

@@ -6,7 +6,6 @@
 */
 
 'use client';
-
 import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates } from "nuqs";
 
@@ -15,12 +14,18 @@ const defaultResolution = RESOLUTIONS.cards.find((card) => card.default)?.value 
 const defaultFeatures = FEATURES.cards.filter((card) => card.default).map((card) => card.value);
 
 const buildQueryParsers = {
-  budget: parseAsInteger.withDefault(BUDGET.default),
-  purpose: parseAsString.withDefault(defaultPurpose),
-  resolution: parseAsString.withDefault(defaultResolution),
-  features: parseAsNativeArrayOf(parseAsString).withDefault(defaultFeatures),
+  [BUDGET.name]: parseAsInteger.withDefault(BUDGET.default),
+  [PURPOSES.name]: parseAsString.withDefault(defaultPurpose),
+  [RESOLUTIONS.name]: parseAsString.withDefault(defaultResolution),
+  [FEATURES.name]: parseAsNativeArrayOf(parseAsString).withDefault(defaultFeatures),
 };
 
+// Get query value of a specific key from the query state
+export function getQueryValue<T>(queryState: any, key: string): T {
+  return queryState[key as keyof typeof queryState] as T;
+}
+
+// Hook to manage query state
 export function useBuildQueryState() {
   return useQueryStates(buildQueryParsers);
 }
