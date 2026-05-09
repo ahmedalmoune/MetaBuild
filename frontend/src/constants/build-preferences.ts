@@ -7,8 +7,15 @@
 
 import { BudgetProps, CardsGroupProps } from "@/types/build-preferences";
 
+// Names for the form fields, URL query params, and API request body
+export const FORM_FIELDS = {
+  budget: "budget",
+  purpose: "purpose",
+  resolution: "resolution",
+  features: "features",
+} as const;
+
 export const BUDGET: BudgetProps = {
-  name: "budget", // name for the form field & URL query param
   min: 500,
   max: 3000,
   steps: 50,
@@ -18,7 +25,7 @@ export const BUDGET: BudgetProps = {
 export const PURPOSES: CardsGroupProps = {
   type: "radio",
   heading: "Primary Purpose",
-  name: "purpose",
+  name: FORM_FIELDS.purpose,
   cards: [
     {
       id: "purpose-gaming",
@@ -40,12 +47,12 @@ export const PURPOSES: CardsGroupProps = {
       description: "Multi-tasking, 3D rendering, animation production"
     }
   ]
-}
+};
 
 export const RESOLUTIONS: CardsGroupProps = {
   type: "radio",
   heading: "Resolution",
-  name: "resolution",
+  name: FORM_FIELDS.resolution,
   cards: [
     {
       id: "resolution-1080p",
@@ -72,7 +79,7 @@ export const RESOLUTIONS: CardsGroupProps = {
 export const FEATURES: CardsGroupProps = {
   type: "checkbox",
   heading: "Special Features (beta)",
-  name: "features",
+  name: FORM_FIELDS.features,
   cards: [
     {
       id: "feature-silent",

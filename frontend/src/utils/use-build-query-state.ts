@@ -3,29 +3,38 @@
 * Description: Shared query state parsers/hooks for build form controls.
 * Author: Ahmed Almoune
 * Date: 5/7/2026
+* TODO: add types to stuff (check if theyre correct)
+* TODO: check if filename needs to be changed for smth better
 */
 
 'use client';
-import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS } from "@/constants/build-preferences";
-import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates } from "nuqs";
+import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS, FORM_FIELDS } from "@/constants/build-preferences";
+import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates, Values } from "nuqs";
+import { BuildQueryProps } from "@/types/build-preferences";
+import { getDefaultCard } from "./utils";
+import { CardProps } from "@/types/build-preferences";
 
-const defaultPurpose = PURPOSES.cards.find((card) => card.default)?.value ?? PURPOSES.cards[0]?.value ?? "";
-const defaultResolution = RESOLUTIONS.cards.find((card) => card.default)?.value ?? RESOLUTIONS.cards[0]?.value ?? "";
-const defaultFeatures = FEATURES.cards.filter((card) => card.default).map((card) => card.value);
+// Get default values of cards
+const defaultPurpose = getDefaultCard<CardProps["value"]>(PURPOSES);
+const defaultResolution = getDefaultCard<CardProps["value"]>(RESOLUTIONS);
+const defaultFeatures = getDefaultCard<CardProps["value"][]>(FEATURES);
 
-const buildQueryParsers = {
-  [BUDGET.name]: parseAsInteger.withDefault(BUDGET.default),
-  [PURPOSES.name]: parseAsString.withDefault(defaultPurpose),
-  [RESOLUTIONS.name]: parseAsString.withDefault(defaultResolution),
-  [FEATURES.name]: parseAsNativeArrayOf(parseAsString).withDefault(defaultFeatures),
+//maybe move to const file
+const buildQueryParsers: BuildQueryProps = {
+  [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default),
+  [FORM_FIELDS.purpose]: parseAsString.withDefault(defaultPurpose),
+  [FORM_FIELDS.resolution]: parseAsString.withDefault(defaultResolution),
+  [FORM_FIELDS.features]: parseAsNativeArrayOf(parseAsString).withDefault(defaultFeatures),
 };
 
-// Get query value of a specific key from the query state
-export function getQueryValue<T>(queryState: any, key: string): T {
-  return queryState[key as keyof typeof queryState] as T;
+// Get query value of a specific key from the query state at runtime
+//Check if this shit is correct
+export function getQueryValue<T extends CardProps["value"] | CardProps["value"][]>
+  (queryState: Values<BuildQueryProps>, key: keyof BuildQueryProps): T {
+  return queryState[key] as T;
 }
 
 // Hook to manage query state
-export function useBuildQueryState() {
+export function useBuildQueryState() : ReturnType<typeof useQueryStates> {
   return useQueryStates(buildQueryParsers);
 }

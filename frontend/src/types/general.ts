@@ -7,14 +7,10 @@
 
 export type MetaProps = {
   appName: string;
+  longName: string;
   appDescription: string;
   author: string;
   authorUrl: string;
-}
-
-export type LocaleProps = {
-  locale: string;
-  currency: string;
 }
 
 export type ServerEndpointProps = {
