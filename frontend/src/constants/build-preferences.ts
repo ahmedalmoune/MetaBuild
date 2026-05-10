@@ -13,7 +13,7 @@ export const FORM_FIELDS = {
   purpose: "purpose",
   resolution: "resolution",
   features: "features",
-} as const satisfies FormFeildsProps;
+} as const satisfies FormFieldsProps;
 
 export const BUDGET = {
   min: 500,
