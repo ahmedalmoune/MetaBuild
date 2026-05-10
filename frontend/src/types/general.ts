@@ -13,6 +13,7 @@ export type MetaProps = {
   authorUrl: string;
 }
 
-export type ServerEndpointProps = {
+// Server API endpoint configuration
+export type ApiEndpointProps = {
   baseUrl: string;
 }

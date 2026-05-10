@@ -13,7 +13,7 @@ import styles from "@/styles/page.module.css";
 import BudgetSlider from "@/components/build-form/budget-slider";
 import OptionsCardsGroup from "@/components/build-form/options-cards-group";
 import GenerateButton from "@/components/build-form/generate-button";
-import { handleSubmit } from "@/utils/utils";
+import { submitBuildForm } from "@/services/build";
 import { PURPOSES, RESOLUTIONS, FEATURES } from "@/constants/build-preferences";
 import { META } from "@/constants/general";
 
@@ -24,7 +24,7 @@ export default function Home() {
       {/* Build Form */}
       <div className={styles.buildForm}>
         <h1 className="text-center display-6 fw-bold mb-4">{META.longName}</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitBuildForm}>
           <BudgetSlider />
           <OptionsCardsGroup CardsGroup={PURPOSES} />
           <OptionsCardsGroup CardsGroup={RESOLUTIONS} />

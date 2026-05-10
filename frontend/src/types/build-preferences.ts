@@ -46,7 +46,7 @@ export type BuildFormProps = {
   [FORM_FIELDS.features]: string[];
 };
 
-//////////////////// check if this is correct
+// check if this is correct
 export type BuildQueryProps = {
   [FORM_FIELDS.budget]: typeof parseAsInteger;
   [FORM_FIELDS.purpose]: typeof parseAsString;

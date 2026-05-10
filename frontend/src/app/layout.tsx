@@ -5,13 +5,13 @@
 * Date: 5/3/2026
 */
 
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapClient from '@/utils/bootstrapclient';
+import { Geist, Geist_Mono } from "next/font/google";
 import { META } from '@/constants/general';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import type { Metadata } from "next";
 
 // Next.js optimized fonts
 const geistSans = Geist({

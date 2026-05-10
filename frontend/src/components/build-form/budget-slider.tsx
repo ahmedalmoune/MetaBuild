@@ -6,7 +6,7 @@
 */
 
 'use client';
-import {formatCurrency} from '@/utils/utils'
+import {formatCurrency} from '@/utils/general'
 import { BUDGET, FORM_FIELDS } from '@/constants/build-preferences'
 import { useBuildQueryState } from '@/utils/use-build-query-state';
 

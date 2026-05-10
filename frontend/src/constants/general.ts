@@ -5,7 +5,7 @@
 * Date: 5/3/2026
 */
 
-import { MetaProps, ServerEndpointProps } from "@/types/general";
+import type { MetaProps, ApiEndpointProps } from "@/types/general";
 
 // Meta data for the app
 export const META: MetaProps = {
@@ -16,6 +16,6 @@ export const META: MetaProps = {
   authorUrl: "https://ahmed-almouna.com"
 };
 
-export const API_ENDPOINT: ServerEndpointProps = {
+export const API_ENDPOINT: ApiEndpointProps = {
   baseUrl: "/api/build/something"
 };

@@ -11,7 +11,7 @@
 import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS, FORM_FIELDS } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates, Values } from "nuqs";
 import { BuildQueryProps } from "@/types/build-preferences";
-import { getDefaultCard } from "./utils";
+import { getDefaultCard } from "./general";
 import { CardProps } from "@/types/build-preferences";
 
 //maybe move to const file
@@ -23,9 +23,8 @@ const buildQueryParsers = {
 } as const satisfies BuildQueryProps;
 
 // Get query value of a specific key from the query state at runtime
-//Check if this shit is correct
 export function getQueryValue<T extends CardProps["value"] | CardProps["value"][]>
-  (queryState: Partial<Values<BuildQueryProps>>, key: keyof BuildQueryProps): T {
+  (queryState: Values<BuildQueryProps>, key: keyof BuildQueryProps): T {
   return queryState[key] as T;
 }
 
