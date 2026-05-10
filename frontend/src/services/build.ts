@@ -1,5 +1,11 @@
+/*
+* File: build.ts
+* Description: File containing build API server functions.
+* Author: Ahmed Almoune
+* Date: 5/3/2026
+*/
 
-import { BuildApiProps } from "@/types/build-preferences";
+import type { BuildApiProps } from "@/types/build-preferences";
 import { API_ENDPOINT } from "@/constants/general";
 import { FORM_FIELDS } from "@/constants/build-preferences";
 

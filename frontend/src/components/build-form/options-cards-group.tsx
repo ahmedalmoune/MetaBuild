@@ -8,7 +8,7 @@
 
 'use client';
 import styles from "@/styles/page.module.css";
-import { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
+import type { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
 import { useBuildQueryState, getQueryValue } from "@/utils/build-query";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {

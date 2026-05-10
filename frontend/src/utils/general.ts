@@ -1,12 +1,12 @@
 /*
-* File: utils.ts
+* File: general.ts
 * Description: Utility/helper functions for the app.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
 * TODO add types to shit
 */
 
-import { CardsGroupProps, CardProps } from "@/types/build-preferences";
+import type { CardsGroupProps, CardProps } from "@/types/build-preferences";
 
 export const formatCurrency: Intl.NumberFormat = new Intl.NumberFormat('en-CA', {
   style: 'currency',

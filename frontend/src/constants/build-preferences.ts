@@ -5,7 +5,7 @@
 * Date: 5/3/2026
 */
 
-import { BudgetProps, CardsGroupProps, FormFeildsProps } from "@/types/build-preferences";
+import type { BudgetProps, CardsGroupProps, FormFeildsProps } from "@/types/build-preferences";
 
 // Names for the form fields, URL query params, and API request body
 export const FORM_FIELDS = {
