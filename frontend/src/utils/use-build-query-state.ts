@@ -14,23 +14,18 @@ import { BuildQueryProps } from "@/types/build-preferences";
 import { getDefaultCard } from "./utils";
 import { CardProps } from "@/types/build-preferences";
 
-// Get default values of cards
-const defaultPurpose = getDefaultCard<CardProps["value"]>(PURPOSES);
-const defaultResolution = getDefaultCard<CardProps["value"]>(RESOLUTIONS);
-const defaultFeatures = getDefaultCard<CardProps["value"][]>(FEATURES);
-
 //maybe move to const file
-const buildQueryParsers: BuildQueryProps = {
+const buildQueryParsers = {
   [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default),
-  [FORM_FIELDS.purpose]: parseAsString.withDefault(defaultPurpose),
-  [FORM_FIELDS.resolution]: parseAsString.withDefault(defaultResolution),
-  [FORM_FIELDS.features]: parseAsNativeArrayOf(parseAsString).withDefault(defaultFeatures),
-};
+  [FORM_FIELDS.purpose]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(PURPOSES)),
+  [FORM_FIELDS.resolution]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(RESOLUTIONS)),
+  [FORM_FIELDS.features]: parseAsNativeArrayOf(parseAsString).withDefault(getDefaultCard<CardProps["value"][]>(FEATURES))
+} as const satisfies BuildQueryProps;
 
 // Get query value of a specific key from the query state at runtime
 //Check if this shit is correct
 export function getQueryValue<T extends CardProps["value"] | CardProps["value"][]>
-  (queryState: Values<BuildQueryProps>, key: keyof BuildQueryProps): T {
+  (queryState: Partial<Values<BuildQueryProps>>, key: keyof BuildQueryProps): T {
   return queryState[key] as T;
 }
 

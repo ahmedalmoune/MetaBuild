@@ -5,7 +5,7 @@
 * Date: 5/3/2026
 */
 
-import { BudgetProps, CardsGroupProps } from "@/types/build-preferences";
+import { BudgetProps, CardsGroupProps, FormFeildsProps } from "@/types/build-preferences";
 
 // Names for the form fields, URL query params, and API request body
 export const FORM_FIELDS = {
@@ -13,16 +13,16 @@ export const FORM_FIELDS = {
   purpose: "purpose",
   resolution: "resolution",
   features: "features",
-} as const;
+} as const satisfies FormFeildsProps;
 
-export const BUDGET: BudgetProps = {
+export const BUDGET = {
   min: 500,
   max: 3000,
   steps: 50,
   default: 1600
-};
+} as const satisfies BudgetProps;
 
-export const PURPOSES: CardsGroupProps = {
+export const PURPOSES = {
   type: "radio",
   heading: "Primary Purpose",
   name: FORM_FIELDS.purpose,
@@ -47,9 +47,9 @@ export const PURPOSES: CardsGroupProps = {
       description: "Multi-tasking, 3D rendering, animation production"
     }
   ]
-};
+} as const satisfies CardsGroupProps;
 
-export const RESOLUTIONS: CardsGroupProps = {
+export const RESOLUTIONS = {
   type: "radio",
   heading: "Resolution",
   name: FORM_FIELDS.resolution,
@@ -74,9 +74,9 @@ export const RESOLUTIONS: CardsGroupProps = {
       description: "4K, high visual quality"
     }
   ]
-};
+} as const satisfies CardsGroupProps;
 
-export const FEATURES: CardsGroupProps = {
+export const FEATURES = {
   type: "checkbox",
   heading: "Special Features (beta)",
   name: FORM_FIELDS.features,
@@ -106,6 +106,6 @@ export const FEATURES: CardsGroupProps = {
       description: "Future-proof components"
     }
   ]
-};
+} as const satisfies CardsGroupProps;
 
 

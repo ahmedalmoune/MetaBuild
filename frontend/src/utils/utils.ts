@@ -22,12 +22,12 @@ export async function handleSubmit(event: React.SubmitEvent<HTMLFormElement>): P
   const form = event.currentTarget;
   const formData = new FormData(form);
 
-  const payload: BuildFormProps = {
+  const payload = {
     [FORM_FIELDS.budget]: Number(formData.get(FORM_FIELDS.budget)) as BuildFormProps["budget"],
     [FORM_FIELDS.purpose]: formData.get(FORM_FIELDS.purpose) as BuildFormProps["purpose"],
     [FORM_FIELDS.resolution]: formData.get(FORM_FIELDS.resolution) as BuildFormProps["resolution"],
     [FORM_FIELDS.features]: formData.getAll(FORM_FIELDS.features) as BuildFormProps["features"],
-  };
+  } as const satisfies BuildFormProps;
 
   alert(JSON.stringify(payload));
 
