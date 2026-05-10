@@ -6,24 +6,24 @@
 */
 
 'use client';
-import { useState } from 'react';
-import {formatCurrency} from '@/utils/utils'
-import { BUDGET } from '@/constants/build-preferences'
+import {formatCurrency} from '@/utils/general'
+import { BUDGET, FORM_FIELDS } from '@/constants/build-preferences'
+import { useBuildQueryState } from '@/utils/build-query';
 
 export default function BudgetSlider() {
-  
-  const [budget, setBudget] = useState(BUDGET.default);
-  function handleInput(event: React.ChangeEvent<HTMLInputElement>) {
-    setBudget(Number(event.currentTarget.value));
+  const [queryState, setQueryState] = useBuildQueryState();
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    setQueryState({ [FORM_FIELDS.budget]: Number(event.currentTarget.value) });
   }
 
   return (
     <div className="mb-4">
       <label htmlFor="budgetSlider" className="fs-6 fw-semibold align-self-start">
-        Budget: {formatCurrency.format(budget)}
+        Budget: {formatCurrency.format(queryState[FORM_FIELDS.budget])}
       </label>
-      <input type='range' className='form-range' min={BUDGET.min} max={BUDGET.max} 
-        step={BUDGET.steps} id='budgetSlider' name='budget' onChange={handleInput} value={budget} 
+      <input type='range' className='form-range' min={BUDGET.min} max={BUDGET.max} step={BUDGET.steps}
+        id='budgetSlider' name={FORM_FIELDS.budget} onChange={handleChange} value={queryState[FORM_FIELDS.budget]}
       />
       
       <span className='d-flex justify-content-between'>

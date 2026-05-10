@@ -5,12 +5,13 @@
 * Date: 5/3/2026
 */
 
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "@/styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BootstrapClient from '@/utils/bootstrapclient';
+import { Geist, Geist_Mono } from "next/font/google";
 import { META } from '@/constants/general';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import type { Metadata } from "next";
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -24,20 +25,22 @@ const geistMono = Geist_Mono({
 
 // Metadata for SEO
 export const metadata: Metadata = {
-  title: META.APP_NAME,
-  description: META.APP_DESCRIPTION,
+  title: META.appName,
+  description: META.appDescription,
 };
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <main>{children}</main>
+        <NuqsAdapter>
+          <main>{children}</main>
+        </NuqsAdapter>
 
         <footer className="text-center pb-4"> 
           <span className="bg-secondary px-2 py-1 rounded text-white"> 
-            Made by <a href={META.AUTHOR_URL} target="_blank" rel="noopener noreferrer" 
-            className="text-white"> {META.AUTHOR}</a>
+            Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
+            className="text-white"> {META.author}</a>
           </span> 
         </footer>
 

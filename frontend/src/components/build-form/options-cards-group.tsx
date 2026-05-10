@@ -6,10 +6,45 @@
 * Date: 5/3/2026
 */
 
-import { CardsGroupProps } from "@/types/build-preferences"; 
+'use client';
 import styles from "@/styles/page.module.css";
+import type { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
+import { useBuildQueryState, getQueryValue } from "@/utils/build-query";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {
+  
+  const [queryState, setQueryState] = useBuildQueryState();
+
+  function handleChange(cardValue: CardProps['value'], checked: boolean): void {
+    // Handle radios e.g. resolution
+    if (CardsGroup.type === 'radio') {
+      setQueryState({ [CardsGroup.name]: cardValue });
+    }
+
+    // Handle checkboxes e.g. special features
+    else if (CardsGroup.type === 'checkbox') {
+      const checkboxSet = new Set(getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name));
+      if (checked) {
+        checkboxSet.add(cardValue);
+      } else {
+        checkboxSet.delete(cardValue);
+      }
+      const newCheckboxArray = Array.from(checkboxSet);
+
+      setQueryState({ [CardsGroup.name]: newCheckboxArray });
+    }
+  }
+
+  function isCardChecked(cardValue: CardProps['value']): boolean {
+    if (CardsGroup.type === 'radio') {
+      return getQueryValue<CardProps['value']>(queryState, CardsGroup.name) === cardValue;
+    }
+    else if (CardsGroup.type === 'checkbox') {
+      return getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name).includes(cardValue);
+    }
+    return false;
+  }
+
   return (
     <>
       <h6>{CardsGroup.heading}</h6>
@@ -22,7 +57,8 @@ export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupP
             <div className="card-body d-flex flex-row align-items-center">
               <div className="form-check me-2">
                 <input className="form-check-input" type={CardsGroup.type} name={CardsGroup.name} value={card.value} 
-                  id={card.id} defaultChecked={card.default} 
+                  id={card.id} checked={isCardChecked(card.value)}
+                  onChange={(event) => handleChange(card.value, event.currentTarget.checked)}
                 />
               </div>
 

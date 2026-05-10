@@ -5,19 +5,27 @@
 * Date: 5/3/2026
 */
 
-import { BudgetProps, CardsGroupProps } from "@/types/build-preferences";
+import type { BudgetProps, CardsGroupProps, FormFeildsProps } from "@/types/build-preferences";
 
-export const BUDGET: BudgetProps = {
+// Names for the form fields, URL query params, and API request body
+export const FORM_FIELDS = {
+  budget: "budget",
+  purpose: "purpose",
+  resolution: "resolution",
+  features: "features",
+} as const satisfies FormFeildsProps;
+
+export const BUDGET = {
   min: 500,
   max: 3000,
   steps: 50,
   default: 1600
-};
+} as const satisfies BudgetProps;
 
-export const PURPOSES: CardsGroupProps = {
+export const PURPOSES = {
   type: "radio",
   heading: "Primary Purpose",
-  name: "purpose",
+  name: FORM_FIELDS.purpose,
   cards: [
     {
       id: "purpose-gaming",
@@ -39,12 +47,12 @@ export const PURPOSES: CardsGroupProps = {
       description: "Multi-tasking, 3D rendering, animation production"
     }
   ]
-}
+} as const satisfies CardsGroupProps;
 
-export const RESOLUTIONS: CardsGroupProps = {
+export const RESOLUTIONS = {
   type: "radio",
   heading: "Resolution",
-  name: "resolution",
+  name: FORM_FIELDS.resolution,
   cards: [
     {
       id: "resolution-1080p",
@@ -66,12 +74,12 @@ export const RESOLUTIONS: CardsGroupProps = {
       description: "4K, high visual quality"
     }
   ]
-};
+} as const satisfies CardsGroupProps;
 
-export const FEATURES: CardsGroupProps = {
+export const FEATURES = {
   type: "checkbox",
   heading: "Special Features (beta)",
-  name: "features",
+  name: FORM_FIELDS.features,
   cards: [
     {
       id: "feature-silent",
@@ -98,6 +106,6 @@ export const FEATURES: CardsGroupProps = {
       description: "Future-proof components"
     }
   ]
-};
+} as const satisfies CardsGroupProps;
 
 

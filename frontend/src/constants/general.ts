@@ -5,10 +5,17 @@
 * Date: 5/3/2026
 */
 
+import type { MetaProps, ApiEndpointProps } from "@/types/general";
+
 // Meta data for the app
-export const META = {
-  APP_NAME: "MetaBuild",
-  APP_DESCRIPTION: "PC builder app by Ahmed Almoune",
-  AUTHOR: "Ahmed A",
-  AUTHOR_URL: "https://ahmed-almouna.com"
+export const META: MetaProps = {
+  appName: "MetaBuild",
+  longName: "MetaBuild PC Builder",
+  appDescription: "PC builder app by Ahmed Almoune",
+  author: "Ahmed A",
+  authorUrl: "https://ahmed-almouna.com"
+};
+
+export const API_ENDPOINT: ApiEndpointProps = {
+  baseUrl: "/api/build/something"
 };
