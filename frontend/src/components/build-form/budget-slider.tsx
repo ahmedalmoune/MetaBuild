@@ -8,7 +8,7 @@
 'use client';
 import {formatCurrency} from '@/utils/general'
 import { BUDGET, FORM_FIELDS } from '@/constants/build-preferences'
-import { useBuildQueryState } from '@/utils/use-build-query-state';
+import { useBuildQueryState } from '@/utils/build-query';
 
 export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();

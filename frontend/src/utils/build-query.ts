@@ -21,7 +21,7 @@ const buildQueryParsers = {
   [FORM_FIELDS.features]: parseAsNativeArrayOf(parseAsString).withDefault(getDefaultCard<CardProps["value"][]>(FEATURES))
 } as const satisfies BuildQueryProps;
 
-// Get query value of a specific key from the query state at runtime
+// Get query value for a specific parameter at runtime
 export function getQueryValue<T extends typeof BUDGET.default | CardProps["value"] | CardProps["value"][]>
   (queryState: Values<BuildQueryProps>, key: keyof BuildQueryProps): T {
   return queryState[key] as T;

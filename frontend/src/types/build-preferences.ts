@@ -22,7 +22,7 @@ export type BudgetProps = {
   default: number;
 }
 
-// Represents the variables of a radio or checkbox card
+// Represents the attributes of an individual radio or checkbox card
 export type CardProps = {
   id: string;
   value: string;
@@ -31,6 +31,7 @@ export type CardProps = {
   default?: boolean;
 };
 
+// Represents a group of radio or checkbox cards for a specific requirement e.g. resolution
 export type CardsGroupProps = {
   type: "checkbox" | "radio";
   heading: string;
