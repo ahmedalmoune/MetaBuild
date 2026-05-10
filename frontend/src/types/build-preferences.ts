@@ -8,7 +8,7 @@
 import { FORM_FIELDS } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString } from "nuqs";
 
-export type FormFeildsProps = {
+export type FormFieldsProps = {
   budget: string;
   purpose: string;
   resolution: string;
