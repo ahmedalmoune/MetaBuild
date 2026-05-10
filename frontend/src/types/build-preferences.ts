@@ -39,17 +39,18 @@ export type CardsGroupProps = {
   cards: CardProps[];
 };
 
-export type BuildFormProps = {
+// Represents the payload sent to the server API
+export type BuildApiProps = {
   [FORM_FIELDS.budget]: number;
   [FORM_FIELDS.purpose]: string;
   [FORM_FIELDS.resolution]: string;
   [FORM_FIELDS.features]: string[];
 };
 
-// check if this is correct
+// Represents the query params for the URL
 export type BuildQueryProps = {
-  [FORM_FIELDS.budget]: typeof parseAsInteger;
-  [FORM_FIELDS.purpose]: typeof parseAsString;
-  [FORM_FIELDS.resolution]: typeof parseAsString;
-  [FORM_FIELDS.features]: ReturnType<typeof parseAsNativeArrayOf<string>>;
+  [FORM_FIELDS.budget]: ReturnType<typeof parseAsInteger.withDefault>;
+  [FORM_FIELDS.purpose]: ReturnType<typeof parseAsString.withDefault>;
+  [FORM_FIELDS.resolution]: ReturnType<typeof parseAsString.withDefault>;
+  [FORM_FIELDS.features]: ReturnType<ReturnType<typeof parseAsNativeArrayOf<string>>['withDefault']>;
 };

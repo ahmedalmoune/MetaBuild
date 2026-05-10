@@ -8,11 +8,11 @@
 
 import { CardsGroupProps, CardProps } from "@/types/build-preferences";
 
-export const formatCurrency = new Intl.NumberFormat('en-CA', {
+export const formatCurrency: Intl.NumberFormat = new Intl.NumberFormat('en-CA', {
   style: 'currency',
   currency: 'CAD',
   maximumFractionDigits: 0,
-}) as Intl.NumberFormat;
+});
 
 // Get value(s) of default card(s) in a card group
 export function getDefaultCard<T extends CardProps["value"] | CardProps["value"][]>(cardGroup: CardsGroupProps): T {
