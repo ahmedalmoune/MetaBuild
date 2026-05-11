@@ -10,10 +10,31 @@
 import styles from "@/styles/page.module.css";
 import type { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
 import { useBuildQueryState, getQueryValue } from "@/utils/build-query";
+import { useEffect } from "react";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {
   
   const [queryState, setQueryState] = useBuildQueryState();
+
+  console.count(`OptionsCardsGroup render: ${CardsGroup.name}`);
+
+  useEffect(() => {
+    if (CardsGroup.type === "radio") {
+      const currentValue = getQueryValue<CardProps['value']>(queryState, CardsGroup.name);
+      if (!CardsGroup.cards.some((card) => card.value === currentValue)) {
+        setQueryState({ [CardsGroup.name]: CardsGroup.cards[0].value });
+      }
+    }
+    else if (CardsGroup.type === "checkbox") {
+      const currentValue = getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name);
+      const invalidValues = currentValue.filter(value => !CardsGroup.cards.some(card => card.value === value));
+      if (invalidValues.length > 0) {
+        const validValues = currentValue.filter(value => CardsGroup.cards.some(card => card.value === value));
+        setQueryState({ [CardsGroup.name]: validValues });
+      }
+    }
+  }, [CardsGroup, queryState, setQueryState]);
+
 
   function handleChange(cardValue: CardProps['value'], checked: boolean): void {
     // Handle radios e.g. resolution

@@ -16,8 +16,51 @@ import GenerateButton from "@/components/build-form/generate-button";
 import { submitBuildForm } from "@/services/build";
 import { PURPOSES, RESOLUTIONS, FEATURES } from "@/constants/build-preferences";
 import { META } from "@/constants/general";
+import { useEffect } from "react";
+import { FORM_FIELDS } from "@/constants/build-preferences";
 
 export default function Home() {
+
+useEffect(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const validKeys = Object.values(FORM_FIELDS);
+  
+  let urlChanged = false;
+  
+  for (const [key] of urlParams) {
+    // Remove invalid keys
+    if (!validKeys.includes(key as any)) {
+      urlParams.delete(key);
+      urlChanged = true;
+      continue;
+    }
+    
+    // Handle repeating values (deduplicate)
+    const allValues = urlParams.getAll(key);
+    if (allValues.length > 1) {
+      // For radio fields, keep only the first valid value
+      if (key === FORM_FIELDS.purpose || key === FORM_FIELDS.resolution) {
+        urlParams.delete(key);
+        urlParams.set(key, allValues[0]);
+        urlChanged = true;
+      }
+      // For checkbox fields, deduplicate
+      else if (key === FORM_FIELDS.features) {
+        const uniqueValues = [...new Set(allValues)];
+        urlParams.delete(key);
+        uniqueValues.forEach(value => urlParams.append(key, value));
+        urlChanged = true;
+      }
+    }
+  }
+  
+  if (urlChanged) {
+    const newUrl = `${window.location.pathname}${urlParams.toString() ? '?' + urlParams.toString() : ''}`;
+    window.history.replaceState({}, '', newUrl);
+  }
+}, []);
+
+
   return (
     <div className={styles.page}>
 

@@ -59,13 +59,13 @@ export const RESOLUTIONS = {
       value: "1080p",
       title: "1080p",
       description: "Full HD, high fps",
+      default: true
     },
     {
       id: "resolution-1440p",
       value: "1440p",
       title: "1440p",
       description: "2K, balanced",
-      default: true
     },
     {
       id: "resolution-2160p",
