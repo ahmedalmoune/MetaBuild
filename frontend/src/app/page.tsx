@@ -25,8 +25,6 @@ export default function Home() {
     const validKeys = Object.values(FORM_FIELDS);
     let urlChanged = false;
     
-
-
     // First pass: identify invalid keys
     const invalidKeys: string[] = [];
     for (const [key] of urlParams) {
@@ -41,11 +39,11 @@ export default function Home() {
       urlChanged = true;
     });
 
-    // Check budget value
+    // Delete budget if it has invalid value (special case because its int type)
     const budgetValue = urlParams.get(FORM_FIELDS.budget);
     if (budgetValue) {
       const budgetNum = parseInt(budgetValue, 10);
-      if (isNaN(budgetNum) || budgetNum < BUDGET.min || budgetNum > BUDGET.max) {
+      if (isNaN(budgetNum)) {
         urlParams.delete(FORM_FIELDS.budget);
         urlChanged = true;
       }

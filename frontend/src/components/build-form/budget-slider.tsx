@@ -15,7 +15,7 @@ export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();
 
   const validateBudget = useCallback((value: number): boolean => {
-    return !isNaN(value) && (value >= BUDGET.min && value <= BUDGET.max);
+    return !isNaN(value) && (value >= BUDGET.min && value <= BUDGET.max && value % BUDGET.steps === 0);
   }, []);
 
   // Validate budget On Mount and when query state changes
