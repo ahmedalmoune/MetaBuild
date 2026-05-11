@@ -16,13 +16,12 @@ export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupP
   
   const [queryState, setQueryState] = useBuildQueryState();
 
-  console.count(`OptionsCardsGroup render: ${CardsGroup.name}`);
-
+  // Reset query state if it has an invalid value
   useEffect(() => {
     if (CardsGroup.type === "radio") {
       const currentValue = getQueryValue<CardProps['value']>(queryState, CardsGroup.name);
       if (!CardsGroup.cards.some((card) => card.value === currentValue)) {
-        setQueryState({ [CardsGroup.name]: CardsGroup.cards[0].value });
+        setQueryState({ [CardsGroup.name]: CardsGroup.cards.find((card) => card.default)?.value });
       }
     }
     else if (CardsGroup.type === "checkbox") {

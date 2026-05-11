@@ -9,12 +9,27 @@
 import {formatCurrency} from '@/utils/general'
 import { BUDGET, FORM_FIELDS } from '@/constants/build-preferences'
 import { useBuildQueryState } from '@/utils/build-query';
+import { useEffect, useCallback } from 'react';
 
 export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();
 
+  const validateBudget = useCallback((value: number): boolean => {
+    return !isNaN(value) && (value >= BUDGET.min && value <= BUDGET.max);
+  }, []);
+
+  // Validate budget On Mount and when query state changes
+  useEffect(() => {
+    const currentBudget = queryState[FORM_FIELDS.budget];
+
+    if (!validateBudget(currentBudget)) {
+      setQueryState({ [FORM_FIELDS.budget]: BUDGET.default });
+    }
+  }, [queryState, setQueryState, validateBudget]);
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setQueryState({ [FORM_FIELDS.budget]: Number(event.currentTarget.value) });
+    const value = Number(event.currentTarget.value); 
+    setQueryState({ [FORM_FIELDS.budget]: value }); 
   }
 
   return (
