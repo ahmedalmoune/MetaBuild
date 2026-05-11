@@ -13,10 +13,13 @@ import { getDefaultCard } from "./general";
 
 //maybe move to const file
 const buildQueryParsers = {
-  [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default),
-  [FORM_FIELDS.purpose]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(PURPOSES)),
-  [FORM_FIELDS.resolution]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(RESOLUTIONS)),
+  [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default).withOptions({ history: 'push' }),
+  [FORM_FIELDS.purpose]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(PURPOSES))
+    .withOptions({ history: 'push' }),
+  [FORM_FIELDS.resolution]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(RESOLUTIONS))
+    .withOptions({ history: 'push' }),
   [FORM_FIELDS.features]: parseAsNativeArrayOf(parseAsString).withDefault(getDefaultCard<CardProps["value"][]>(FEATURES))
+    .withOptions({ history: 'push' })
 } as const satisfies BuildQueryProps;
 
 // Get query value for a specific parameter at runtime
