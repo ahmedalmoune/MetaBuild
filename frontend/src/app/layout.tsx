@@ -12,6 +12,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { META } from '@/constants/general';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { Metadata } from "next";
+import { Toaster } from 'sonner';
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
           </span> 
         </footer>
 
+        <Toaster position="bottom-right" />
         <BootstrapClient />
       </body>
     </html>

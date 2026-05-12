@@ -10,6 +10,8 @@ import {formatCurrency} from '@/utils/general'
 import { BUDGET, FORM_FIELDS } from '@/constants/build-preferences'
 import { useBuildQueryState } from '@/utils/build-query';
 import { useEffect, useCallback } from 'react';
+import { toast } from 'sonner';
+import { ERROR_MESSAGES } from '@/constants/general';
 
 export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();
@@ -20,16 +22,24 @@ export default function BudgetSlider() {
 
   // Validate budget On Mount and when query state changes
   useEffect(() => {
-    const currentBudget = queryState[FORM_FIELDS.budget];
+    try {
+      const currentBudget = queryState[FORM_FIELDS.budget];
 
-    if (!validateBudget(currentBudget)) {
-      setQueryState({ [FORM_FIELDS.budget]: BUDGET.default });
+      if (!validateBudget(currentBudget)) {
+        setQueryState({ [FORM_FIELDS.budget]: BUDGET.default });
+      }
+    } catch (error) {
+      toast.error(ERROR_MESSAGES.queryValue);
     }
   }, [queryState, setQueryState, validateBudget]);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    const value = Number(event.currentTarget.value); 
-    setQueryState({ [FORM_FIELDS.budget]: value }); 
+    try {
+      const value = Number(event.currentTarget.value); 
+      setQueryState({ [FORM_FIELDS.budget]: value }); 
+    } catch (error) {
+      toast.error(ERROR_MESSAGES.queryValue);
+    }
   }
 
   return (

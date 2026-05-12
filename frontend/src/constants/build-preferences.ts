@@ -19,7 +19,7 @@ export const BUDGET = {
   min: 500,
   max: 3000,
   steps: 50,
-  default: 1600
+  default: 1500
 } as const satisfies BudgetProps;
 
 export const PURPOSES = {

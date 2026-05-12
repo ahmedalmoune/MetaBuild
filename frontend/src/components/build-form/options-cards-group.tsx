@@ -11,6 +11,8 @@ import styles from "@/styles/page.module.css";
 import type { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
 import { useBuildQueryState, getQueryValue } from "@/utils/build-query";
 import { useEffect } from "react";
+import { toast } from "sonner";
+import { ERROR_MESSAGES } from "@/constants/general";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {
   
@@ -18,51 +20,64 @@ export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupP
 
   // Reset query state if it has an invalid value
   useEffect(() => {
-    if (CardsGroup.type === "radio") {
-      const currentValue = getQueryValue<CardProps['value']>(queryState, CardsGroup.name);
-      if (!CardsGroup.cards.some((card) => card.value === currentValue)) {
-        setQueryState({ [CardsGroup.name]: CardsGroup.cards.find((card) => card.default)?.value });
+    try {
+      if (CardsGroup.type === "radio") {
+        const currentValue = getQueryValue<CardProps['value']>(queryState, CardsGroup.name);
+        if (!CardsGroup.cards.some((card) => card.value === currentValue)) {
+          setQueryState({ [CardsGroup.name]: CardsGroup.cards.find((card) => card.default)?.value });
+        }
       }
-    }
-    else if (CardsGroup.type === "checkbox") {
-      const currentValue = getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name);
-      const invalidValues = currentValue.filter(value => !CardsGroup.cards.some(card => card.value === value));
-      if (invalidValues.length > 0) {
-        const validValues = currentValue.filter(value => CardsGroup.cards.some(card => card.value === value));
-        setQueryState({ [CardsGroup.name]: validValues });
+      else if (CardsGroup.type === "checkbox") {
+        const currentValue = getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name);
+        const invalidValues = currentValue.filter(value => !CardsGroup.cards.some(card => card.value === value));
+        if (invalidValues.length > 0) {
+          const validValues = currentValue.filter(value => CardsGroup.cards.some(card => card.value === value));
+          setQueryState({ [CardsGroup.name]: validValues });
+        }
       }
+    } catch (error) {
+      toast.error(ERROR_MESSAGES.queryValue);
     }
   }, [CardsGroup, queryState, setQueryState]);
 
 
   function handleChange(cardValue: CardProps['value'], checked: boolean): void {
-    // Handle radios e.g. resolution
-    if (CardsGroup.type === 'radio') {
-      setQueryState({ [CardsGroup.name]: cardValue });
-    }
-
-    // Handle checkboxes e.g. special features
-    else if (CardsGroup.type === 'checkbox') {
-      const checkboxSet = new Set(getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name));
-      if (checked) {
-        checkboxSet.add(cardValue);
-      } else {
-        checkboxSet.delete(cardValue);
+    try {
+      // Handle radios e.g. resolution
+      if (CardsGroup.type === 'radio') {
+        setQueryState({ [CardsGroup.name]: cardValue });
       }
-      const newCheckboxArray = Array.from(checkboxSet);
 
-      setQueryState({ [CardsGroup.name]: newCheckboxArray });
+      // Handle checkboxes e.g. special features
+      else if (CardsGroup.type === 'checkbox') {
+        const checkboxSet = new Set(getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name));
+        if (checked) {
+          checkboxSet.add(cardValue);
+        } else {
+          checkboxSet.delete(cardValue);
+        }
+        const newCheckboxArray = Array.from(checkboxSet);
+
+        setQueryState({ [CardsGroup.name]: newCheckboxArray });
+      }
+    } catch (error) {
+      toast.error(ERROR_MESSAGES.queryValue);
     }
   }
 
   function isCardChecked(cardValue: CardProps['value']): boolean {
-    if (CardsGroup.type === 'radio') {
-      return getQueryValue<CardProps['value']>(queryState, CardsGroup.name) === cardValue;
+    try {
+      if (CardsGroup.type === 'radio') {
+        return getQueryValue<CardProps['value']>(queryState, CardsGroup.name) === cardValue;
+      }
+      else if (CardsGroup.type === 'checkbox') {
+        return getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name).includes(cardValue);
+      }
+      return false;
+    } catch (error) {
+      toast.error(ERROR_MESSAGES.queryValue);
+      return false;
     }
-    else if (CardsGroup.type === 'checkbox') {
-      return getQueryValue<CardProps['value'][]>(queryState, CardsGroup.name).includes(cardValue);
-    }
-    return false;
   }
 
   return (

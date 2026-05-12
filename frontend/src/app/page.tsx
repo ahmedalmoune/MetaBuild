@@ -4,7 +4,6 @@
 * Author: Ahmed Almoune
 * Date: 5/3/2026
 * TODO: Add locale setting that ties to format currency,
-* Look into adding error handling,
 */
 
 'use client';
@@ -14,8 +13,9 @@ import OptionsCardsGroup from "@/components/build-form/options-cards-group";
 import GenerateButton from "@/components/build-form/generate-button";
 import { submitBuildForm } from "@/services/build";
 import { PURPOSES, RESOLUTIONS, FEATURES, FORM_FIELDS } from "@/constants/build-preferences";
-import { META } from "@/constants/general";
+import { META, ERROR_MESSAGES } from "@/constants/general";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 export default function Home() {
 
@@ -73,7 +73,7 @@ export default function Home() {
         window.history.replaceState({}, '', newUrl);
       }
     } catch (error) {
-      console.error('Error cleaning URL parameters:', error);
+      toast.error(ERROR_MESSAGES.queryKey);
     }
   }, []);
 
