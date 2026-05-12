@@ -43,7 +43,7 @@ export default function BudgetSlider() {
   }
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 mt-2">
       <label htmlFor="budgetSlider" className="fs-6 fw-semibold align-self-start">
         Budget: {formatCurrency.format(queryState[FORM_FIELDS.budget])}
       </label>

@@ -6,13 +6,15 @@
 */
 
 'use client';
-import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS, FORM_FIELDS } from "@/constants/build-preferences";
+import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS, FORM_FIELDS, DEFAULT_COUNTRY } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates, Values, UseQueryStatesReturn } from "nuqs";
 import type { BuildQueryProps, CardProps } from "@/types/build-preferences";
 import { getDefaultCard } from "./general";
 
 //maybe move to const file
 const buildQueryParsers = {
+  [FORM_FIELDS.country]: parseAsString.withDefault(DEFAULT_COUNTRY.code)
+    .withOptions({ history: 'push' }),
   [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default).withOptions({ history: 'push' }),
   [FORM_FIELDS.purpose]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(PURPOSES))
     .withOptions({ history: 'push' }),

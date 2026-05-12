@@ -89,7 +89,7 @@ export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupP
           <label key={card.id} className={`card p-0 flex-fill ${styles.optionsCard}
             ${CardsGroup.type === 'radio' ? 'col-auto' : 'col-xs-auto col-sm-4'}`}
           >
-            <div className="card-body d-flex flex-row align-items-center">
+            <div className="card-body d-flex flex-row align-items-center shadow-sm">
               <div className="form-check me-2">
                 <input className="form-check-input" type={CardsGroup.type} name={CardsGroup.name} value={card.value} 
                   id={card.id} checked={isCardChecked(card.value)}

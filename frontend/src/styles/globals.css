@@ -48,6 +48,6 @@ form {
 
 /* Bootstrap Overrides */
 
-.form-check-input {
+.form-check-input, .form-select {
   cursor: pointer;
 }

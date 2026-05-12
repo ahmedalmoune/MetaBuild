@@ -9,6 +9,7 @@ import { FORM_FIELDS } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString } from "nuqs";
 
 export type FormFieldsProps = {
+  country: string;
   budget: string;
   purpose: string;
   resolution: string;
@@ -40,8 +41,18 @@ export type CardsGroupProps = {
   cards: CardProps[];
 };
 
+export type CountryProps = {
+  code: string;
+  value: string;
+  currency: string;
+  locale: string;
+  default?: boolean;
+}
+
+
 // Represents the payload sent to the server API
 export type BuildApiProps = {
+  [FORM_FIELDS.country]: string;
   [FORM_FIELDS.budget]: number;
   [FORM_FIELDS.purpose]: string;
   [FORM_FIELDS.resolution]: string;
@@ -50,6 +61,7 @@ export type BuildApiProps = {
 
 // Represents the query params for the URL
 export type BuildQueryProps = {
+  [FORM_FIELDS.country]: ReturnType<typeof parseAsString.withDefault>;
   [FORM_FIELDS.budget]: ReturnType<typeof parseAsInteger.withDefault>;
   [FORM_FIELDS.purpose]: ReturnType<typeof parseAsString.withDefault>;
   [FORM_FIELDS.resolution]: ReturnType<typeof parseAsString.withDefault>;
