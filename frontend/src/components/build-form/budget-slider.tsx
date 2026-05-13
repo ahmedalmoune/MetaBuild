@@ -45,15 +45,15 @@ export default function BudgetSlider() {
   return (
     <div className="mb-4 mt-2">
       <label htmlFor="budgetSlider" className="fs-6 fw-semibold align-self-start">
-        Budget: {formatCurrency.format(queryState[FORM_FIELDS.budget])}
+        Budget: {formatCurrency(queryState[FORM_FIELDS.budget], queryState[FORM_FIELDS.country])}
       </label>
       <input type='range' className='form-range' min={BUDGET.min} max={BUDGET.max} step={BUDGET.steps}
         id='budgetSlider' name={FORM_FIELDS.budget} onChange={handleChange} value={queryState[FORM_FIELDS.budget]}
       />
       
       <span className='d-flex justify-content-between'>
-        <span className='text-muted'>{formatCurrency.format(BUDGET.min)}</span>
-        <span className='text-muted'>{formatCurrency.format(BUDGET.max)}</span>
+        <span className='text-muted'>{formatCurrency(BUDGET.min, queryState[FORM_FIELDS.country])}</span>
+        <span className='text-muted'>{formatCurrency(BUDGET.max, queryState[FORM_FIELDS.country])}</span>
       </span>
     </div>
   );

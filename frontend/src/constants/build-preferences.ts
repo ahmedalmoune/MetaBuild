@@ -115,7 +115,7 @@ export const COUNTRIES = [
   { code: 'AU', value: 'Australia', currency: 'AUD', locale: 'en-AU' },
   { code: 'AT', value: 'Austria', currency: 'EUR', locale: 'de-AT' },
   { code: 'BE', value: 'Belgium', currency: 'EUR', locale: 'nl-BE' },
-  { code: 'CA', value: 'Canada', currency: 'CAD', locale: 'en-CA', default: true },
+  { code: 'CA', value: 'Canada', currency: 'CAD', locale: 'en-CA' },
   { code: 'CZ', value: 'Czech Republic', currency: 'CZK', locale: 'cs-CZ' },
   { code: 'DK', value: 'Denmark', currency: 'DKK', locale: 'da-DK' },
   { code: 'FI', value: 'Finland', currency: 'EUR', locale: 'fi-FI' },
@@ -134,7 +134,7 @@ export const COUNTRIES = [
   { code: 'ES', value: 'Spain', currency: 'EUR', locale: 'es-ES' },
   { code: 'SE', value: 'Sweden', currency: 'SEK', locale: 'sv-SE' },
   { code: 'GB', value: 'United Kingdom', currency: 'GBP', locale: 'en-GB' },
-  { code: 'US', value: 'United States', currency: 'USD', locale: 'en-US' },
+  { code: 'US', value: 'United States', currency: 'USD', locale: 'en-US', default: true },
 
 ] as const satisfies CountryProps[];
 

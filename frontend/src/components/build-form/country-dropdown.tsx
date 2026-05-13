@@ -16,32 +16,26 @@ import { toast } from "sonner";
 
 export default function CountryDropdown() {
   const [queryState, setQueryState] = useBuildQueryState();
-
+  const CountryFlag = Flags[queryState[FORM_FIELDS.country] as keyof typeof Flags] || Flags[DEFAULT_COUNTRY.code];
 
   const validateCountry = useCallback(() => {
     return COUNTRIES.some(country => country.code === queryState[FORM_FIELDS.country]);
   }, [queryState]);
 
-
-
- // const CountryFlag = Flags[queryState[FORM_FIELDS.country] as keyof typeof Flags] || Flags.US;
-
+  // Validate country On Mount and when query state changes
   useEffect(() => {
     try {
-      // Validate country on mount
       if (!validateCountry()) {
         setQueryState({ [FORM_FIELDS.country]: DEFAULT_COUNTRY.code });
       }
-    
     } catch (error) {
       toast.error(ERROR_MESSAGES.queryValue);
     }
   }, [setQueryState, validateCountry]);
 
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     try {
-      setQueryState({ [FORM_FIELDS.country]: e.target.value });
+      setQueryState({ [FORM_FIELDS.country]: event.target.value });
     } catch (error) {
       toast.error(ERROR_MESSAGES.queryValue);
     }
@@ -49,9 +43,8 @@ export default function CountryDropdown() {
 
   return (
     <div className="mb-4 mt-2 align-self-end">
-      <div className={`me-2 border border-secondary`} style={{ width: "2rem" }}>
-        {Flags[queryState[FORM_FIELDS.country] as keyof typeof Flags]}
-      </div>
+      {<CountryFlag className="me-2 border border-secondary d-inline-block" style={{ width: "2rem" }} />}
+
       <select className={`form-select form-select-sm w-auto d-inline-block shadow-sm ${styles.lightScrollbar}`} 
         name={FORM_FIELDS.country} value={queryState[FORM_FIELDS.country]} onChange={handleChange}>
           
