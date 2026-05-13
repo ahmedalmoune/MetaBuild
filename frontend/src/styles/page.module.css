@@ -34,7 +34,7 @@
   max-width: 500px; /* Note: maybe delete */
 }
 .optionsCard:hover {
-  background-color: #f2f2f2;
+  background-color: var(--hover-color);
 }
 
 .growOnHover {
@@ -47,14 +47,14 @@
 .lightScrollbar::-webkit-scrollbar {
   width: 10px;
 }
-.lightScrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
 .lightScrollbar::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--scrollbar-color);
   border-radius: 10px;
+}
+.lightScrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
 }
 /* Firefox */
 .lightScrollbar {
-  scrollbar-color: #ccc #f1f1f1;
-}
+  scrollbar-color: var(--scrollbar-color) var(--scrollbar-track-color);
+} 
