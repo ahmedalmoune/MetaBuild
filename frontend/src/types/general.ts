@@ -18,6 +18,4 @@ export type ApiEndpointProps = {
   baseUrl: string;
 }
 
-
-
 export type ErrorMessagesProps = Record<string, string>;

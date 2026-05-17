@@ -13,6 +13,7 @@ import { META } from '@/constants/general';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { Metadata } from "next";
 import { Toaster } from 'sonner';
+import { Providers } from './providers';
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -35,7 +36,9 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <NuqsAdapter>
-          <main>{children}</main>
+          <Providers>
+            <main>{children}</main>
+          </Providers>
         </NuqsAdapter>
 
         <footer className="text-center pb-4"> 

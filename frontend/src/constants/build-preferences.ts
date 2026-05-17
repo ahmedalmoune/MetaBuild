@@ -17,8 +17,8 @@ export const FORM_FIELDS = {
 } as const satisfies FormFieldsProps;
 
 export const BUDGET = {
-  min: 500,
-  max: 3000,
+  min: 650,
+  max: 4000,
   steps: 50,
   default: 1500
 } as const satisfies BudgetProps;
@@ -111,31 +111,28 @@ export const FEATURES = {
 
 
 export const COUNTRIES = [
-  // order the below in alphabetical order
-  { code: 'AU', value: 'Australia', currency: 'AUD', locale: 'en-AU' },
-  { code: 'AT', value: 'Austria', currency: 'EUR', locale: 'de-AT' },
-  { code: 'BE', value: 'Belgium', currency: 'EUR', locale: 'nl-BE' },
-  { code: 'CA', value: 'Canada', currency: 'CAD', locale: 'en-CA' },
-  { code: 'CZ', value: 'Czech Republic', currency: 'CZK', locale: 'cs-CZ' },
-  { code: 'DK', value: 'Denmark', currency: 'DKK', locale: 'da-DK' },
-  { code: 'FI', value: 'Finland', currency: 'EUR', locale: 'fi-FI' },
-  { code: 'FR', value: 'France', currency: 'EUR', locale: 'fr-FR' },
-  { code: 'DE', value: 'Germany', currency: 'EUR', locale: 'de-DE' },
-  { code: 'HU', value: 'Hungary', currency: 'HUF', locale: 'hu-HU' },
-  { code: 'IE', value: 'Ireland', currency: 'EUR', locale: 'en-IE' },
-  { code: 'IT', value: 'Italy', currency: 'EUR', locale: 'it-IT' },
-  { code: 'NL', value: 'Netherlands', currency: 'EUR', locale: 'nl-NL' },
-  { code: 'NZ', value: 'New Zealand', currency: 'NZD', locale: 'en-NZ' },
-  { code: 'NO', value: 'Norway', currency: 'NOK', locale: 'nb-NO' },
-  { code: 'PT', value: 'Portugal', currency: 'EUR', locale: 'pt-PT' },
-  { code: 'RO', value: 'Romania', currency: 'RON', locale: 'ro-RO' },
-  { code: 'SA', value: 'Saudi Arabia', currency: 'SAR', locale: 'ar-SA' },
-  { code: 'SK', value: 'Slovakia', currency: 'EUR', locale: 'sk-SK' },
-  { code: 'ES', value: 'Spain', currency: 'EUR', locale: 'es-ES' },
-  { code: 'SE', value: 'Sweden', currency: 'SEK', locale: 'sv-SE' },
-  { code: 'GB', value: 'United Kingdom', currency: 'GBP', locale: 'en-GB' },
-  { code: 'US', value: 'United States', currency: 'USD', locale: 'en-US', default: true },
-
+  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 1.38, locale: 'en-AU' },
+  { code: 'AT', value: 'Austria', currency:        'EUR', exchangeRate: 0.85, locale: 'de-AT' },
+  { code: 'BE', value: 'Belgium', currency:        'EUR', exchangeRate: 0.85, locale: 'nl-BE' },
+  { code: 'CA', value: 'Canada', currency:         'CAD', exchangeRate: 1.37, locale: 'en-CA' },
+  { code: 'CZ', value: 'Czech Republic', currency: 'CZK', exchangeRate: 24.30, locale: 'cs-CZ' },
+  { code: 'DK', value: 'Denmark', currency:        'DKK', exchangeRate: 6.38, locale: 'da-DK' },
+  { code: 'FI', value: 'Finland', currency:        'EUR', exchangeRate: 0.85, locale: 'fi-FI' },
+  { code: 'FR', value: 'France', currency:         'EUR', exchangeRate: 0.85, locale: 'fr-FR' },
+  { code: 'DE', value: 'Germany', currency:        'EUR', exchangeRate: 0.85, locale: 'de-DE' },
+  { code: 'HU', value: 'Hungary', currency:        'HUF', exchangeRate: 356.00, locale: 'hu-HU' },
+  { code: 'IE', value: 'Ireland', currency:        'EUR', exchangeRate: 0.85, locale: 'en-IE' },
+  { code: 'IT', value: 'Italy', currency:          'EUR', exchangeRate: 0.85, locale: 'it-IT' },
+  { code: 'NL', value: 'Netherlands', currency:    'EUR', exchangeRate: 0.85, locale: 'nl-NL' },
+  { code: 'NZ', value: 'New Zealand', currency:    'NZD', exchangeRate: 1.68, locale: 'en-NZ' },
+  { code: 'NO', value: 'Norway', currency:         'NOK', exchangeRate: 9.18, locale: 'nb-NO' },
+  { code: 'PT', value: 'Portugal', currency:       'EUR', exchangeRate: 0.85, locale: 'pt-PT' },
+  { code: 'RO', value: 'Romania', currency:        'RON', exchangeRate: 5.22, locale: 'ro-RO' },
+  { code: 'SA', value: 'Saudi Arabia', currency:   'SAR', exchangeRate: 3.75, locale: 'ar-SA' },
+  { code: 'SK', value: 'Slovakia', currency:       'EUR', exchangeRate: 0.85, locale: 'sk-SK' },
+  { code: 'ES', value: 'Spain', currency:          'EUR', exchangeRate: 0.85, locale: 'es-ES' },
+  { code: 'SE', value: 'Sweden', currency:         'SEK', exchangeRate: 10.88, locale: 'sv-SE' },
+  { code: 'GB', value: 'United Kingdom', currency: 'GBP', exchangeRate: 0.74, locale: 'en-GB' },
+  { code: 'US', value: 'United States', currency:  'USD', exchangeRate: 1.00, locale: 'en-US', default: true },
 ] as const satisfies CountryProps[];
-
 export const DEFAULT_COUNTRY = COUNTRIES.find((country) => (country as CountryProps)?.default) ?? COUNTRIES[0];

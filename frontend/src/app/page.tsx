@@ -5,6 +5,8 @@
 * Date: 5/3/2026
 * TODO: Add locale setting that ties to format currency,
 * TODO: add loading to generate button
+* 
+* look into react-hook-form
 */
 
 'use client';

@@ -9,6 +9,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.100.10",
     "bootstrap": "^5.3.8",
     "country-flag-icons": "^1.6.17",
     "next": "^16.2.6",

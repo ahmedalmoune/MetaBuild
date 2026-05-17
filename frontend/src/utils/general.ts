@@ -6,22 +6,11 @@
 */
 
 import type { CardsGroupProps, CardProps, CountryProps } from "@/types/build-preferences";
-import { COUNTRIES } from "@/constants/build-preferences";
+import { COUNTRIES, DEFAULT_COUNTRY } from "@/constants/build-preferences";
 
-export function getSelectedCountry(countryCode: CountryProps["code"]): CountryProps | undefined {
+// Get the country object from the country code
+export function getCountryObject(countryCode: CountryProps["code"]): CountryProps | undefined {
   return COUNTRIES.find(country => country.code === countryCode);
-}
-
-export function formatCurrency(amount: number, countryCode: CountryProps["code"]): string {
-  const country = getSelectedCountry(countryCode);
-  const locale = country?.locale;
-  const currency = country?.currency;
-  
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: currency,
-    maximumFractionDigits: 0,
-  }).format(amount);
 }
 
 // Get value(s) of default card(s) in a card group
@@ -34,4 +23,21 @@ export function getDefaultCard<T extends CardProps["value"] | CardProps["value"]
     return defaultCards.map((card) => card.value) as T;
   }
   return "" as T;
+}
+
+// Format currency based on country
+export function formatCurrency(amount: number, countryCode: CountryProps["code"], rates: Record<string, number>): string {
+  debugger;
+  const country = getCountryObject(countryCode) || DEFAULT_COUNTRY;
+  const currency = country.currency;
+  
+  
+  const exchangeRate = rates[currency] || country.exchangeRate;
+  const convertedAmount = amount * exchangeRate;
+  
+  return new Intl.NumberFormat(DEFAULT_COUNTRY.locale, {
+    style: 'currency',
+    currency: currency,
+    maximumFractionDigits: 0,
+  }).format(convertedAmount);
 }

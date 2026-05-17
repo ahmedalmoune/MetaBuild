@@ -46,7 +46,8 @@ export type CountryProps = {
   value: string;
   currency: string;
   locale: string;
-  default?: boolean;
+  exchangeRate: number; // Based on USD
+  default?: boolean; 
 }
 
 
