@@ -3,16 +3,15 @@
 * Description: Utility/helper functions for the app.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
-* TODO add types to shit
 */
 
-import type { CardsGroupProps, CardProps } from "@/types/build-preferences";
+import type { CardsGroupProps, CardProps, CountryProps, ExchangeRates } from "@/types/build-preferences";
+import { COUNTRIES, DEFAULT_COUNTRY } from "@/constants/build-preferences";
 
-export const formatCurrency: Intl.NumberFormat = new Intl.NumberFormat('en-CA', {
-  style: 'currency',
-  currency: 'CAD',
-  maximumFractionDigits: 0,
-});
+// Get the country object from the country code
+export function getCountryObject(countryCode: CountryProps["code"]): CountryProps | undefined {
+  return COUNTRIES.find(country => country.code === countryCode);
+}
 
 // Get value(s) of default card(s) in a card group
 export function getDefaultCard<T extends CardProps["value"] | CardProps["value"][]>(cardGroup: CardsGroupProps): T {
@@ -24,4 +23,28 @@ export function getDefaultCard<T extends CardProps["value"] | CardProps["value"]
     return defaultCards.map((card) => card.value) as T;
   }
   return "" as T;
+}
+
+export function convertHoursToMilliSeconds(hours: number): number {
+  return hours * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+}
+
+// Rounds number to 2 decimal places
+export function roundNumber(number: number): number {
+  return Math.round(number * 100) / 100;
+}
+
+// Format currency based on country
+export function formatCurrency(amount: number, countryCode: CountryProps["code"], rates: ExchangeRates): string {
+  const country = getCountryObject(countryCode) || DEFAULT_COUNTRY;
+  const currency = country.currency;
+  
+  const exchangeRate = rates?.[currency];
+  const convertedAmount = amount * exchangeRate;
+  
+  return new Intl.NumberFormat(DEFAULT_COUNTRY.locale, {
+    style: 'currency',
+    currency: currency,
+    maximumFractionDigits: 0, // Rounds to nearest whole number
+  }).format(convertedAmount);
 }

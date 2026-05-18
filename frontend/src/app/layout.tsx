@@ -12,6 +12,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { META } from '@/constants/general';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { Metadata } from "next";
+import { Toaster } from 'sonner';
+import { Providers } from './providers';
 
 // Next.js optimized fonts
 const geistSans = Geist({
@@ -33,18 +35,18 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NuqsAdapter>
-          <main>{children}</main>
-        </NuqsAdapter>
+        <Providers>
+          <NuqsAdapter>
+            <main>{children}</main>
+          </NuqsAdapter>
 
-        <footer className="text-center pb-4"> 
-          <span className="bg-secondary px-2 py-1 rounded text-white"> 
-            Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
-            className="text-white"> {META.author}</a>
-          </span> 
-        </footer>
-
-        <BootstrapClient />
+          <footer className="text-center pb-4"> 
+            <span className="bg-secondary px-2 py-1 rounded text-white"> 
+              Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
+              className="text-white"> {META.author}</a>
+            </span> 
+          </footer>
+        </Providers>
       </body>
     </html>
   );

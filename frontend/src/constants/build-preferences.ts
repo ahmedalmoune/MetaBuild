@@ -5,21 +5,22 @@
 * Date: 5/3/2026
 */
 
-import type { BudgetProps, CardsGroupProps, FormFeildsProps } from "@/types/build-preferences";
+import type { BudgetProps, CardsGroupProps, FormFieldsProps, CountryProps } from "@/types/build-preferences";
 
-// Names for the form fields, URL query params, and API request body
+// The names for the form fields, URL query params, and API request body
 export const FORM_FIELDS = {
+  country: "country",
   budget: "budget",
   purpose: "purpose",
   resolution: "resolution",
   features: "features",
-} as const satisfies FormFeildsProps;
+} as const satisfies FormFieldsProps;
 
 export const BUDGET = {
-  min: 500,
-  max: 3000,
+  min: 650,
+  max: 4000,
   steps: 50,
-  default: 1600
+  default: 1500
 } as const satisfies BudgetProps;
 
 export const PURPOSES = {
@@ -59,13 +60,13 @@ export const RESOLUTIONS = {
       value: "1080p",
       title: "1080p",
       description: "Full HD, high fps",
+      default: true
     },
     {
       id: "resolution-1440p",
       value: "1440p",
       title: "1440p",
       description: "2K, balanced",
-      default: true
     },
     {
       id: "resolution-2160p",
@@ -108,4 +109,29 @@ export const FEATURES = {
   ]
 } as const satisfies CardsGroupProps;
 
-
+export const COUNTRIES = [
+  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 1.38, locale: 'en-AU' },
+  { code: 'AT', value: 'Austria', currency:        'EUR', exchangeRate: 0.85, locale: 'de-AT' },
+  { code: 'BE', value: 'Belgium', currency:        'EUR', exchangeRate: 0.85, locale: 'nl-BE' },
+  { code: 'CA', value: 'Canada', currency:         'CAD', exchangeRate: 1.37, locale: 'en-CA' },
+  { code: 'CZ', value: 'Czech Republic', currency: 'CZK', exchangeRate: 24.30, locale: 'cs-CZ' },
+  { code: 'DK', value: 'Denmark', currency:        'DKK', exchangeRate: 6.38, locale: 'da-DK' },
+  { code: 'FI', value: 'Finland', currency:        'EUR', exchangeRate: 0.85, locale: 'fi-FI' },
+  { code: 'FR', value: 'France', currency:         'EUR', exchangeRate: 0.85, locale: 'fr-FR' },
+  { code: 'DE', value: 'Germany', currency:        'EUR', exchangeRate: 0.85, locale: 'de-DE' },
+  { code: 'HU', value: 'Hungary', currency:        'HUF', exchangeRate: 356.00, locale: 'hu-HU' },
+  { code: 'IE', value: 'Ireland', currency:        'EUR', exchangeRate: 0.85, locale: 'en-IE' },
+  { code: 'IT', value: 'Italy', currency:          'EUR', exchangeRate: 0.85, locale: 'it-IT' },
+  { code: 'NL', value: 'Netherlands', currency:    'EUR', exchangeRate: 0.85, locale: 'nl-NL' },
+  { code: 'NZ', value: 'New Zealand', currency:    'NZD', exchangeRate: 1.68, locale: 'en-NZ' },
+  { code: 'NO', value: 'Norway', currency:         'NOK', exchangeRate: 9.18, locale: 'nb-NO' },
+  { code: 'PT', value: 'Portugal', currency:       'EUR', exchangeRate: 0.85, locale: 'pt-PT' },
+  { code: 'RO', value: 'Romania', currency:        'RON', exchangeRate: 5.22, locale: 'ro-RO' },
+  { code: 'SA', value: 'Saudi Arabia', currency:   'SAR', exchangeRate: 3.75, locale: 'ar-SA' },
+  { code: 'SK', value: 'Slovakia', currency:       'EUR', exchangeRate: 0.85, locale: 'sk-SK' },
+  { code: 'ES', value: 'Spain', currency:          'EUR', exchangeRate: 0.85, locale: 'es-ES' },
+  { code: 'SE', value: 'Sweden', currency:         'SEK', exchangeRate: 10.88, locale: 'sv-SE' },
+  { code: 'GB', value: 'United Kingdom', currency: 'GBP', exchangeRate: 0.74, locale: 'en-GB' },
+  { code: 'US', value: 'United States', currency:  'USD', exchangeRate: 1.00, locale: 'en-US', default: true },
+] as const satisfies CountryProps[];
+export const DEFAULT_COUNTRY = COUNTRIES.find((country) => (country as CountryProps)?.default) ?? COUNTRIES[0];
