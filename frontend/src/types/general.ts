@@ -13,9 +13,15 @@ export type MetaProps = {
   authorUrl: string;
 }
 
+export type ErrorMessagesProps = Record<string, string>;
+
 // Server API endpoint configuration
-export type ApiEndpointProps = {
+export type ApiEndpointsProps = {
   baseUrl: string;
+  exchangeRates: string;
 }
 
-export type ErrorMessagesProps = Record<string, string>;
+export type ExchangeRatesProps = {
+  key: string;
+  cacheTime: number;
+}

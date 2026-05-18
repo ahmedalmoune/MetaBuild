@@ -3,10 +3,8 @@
 * Description: Homepage of the app where the user can change build preferences, generate builds, and view the results.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
-* TODO: Add locale setting that ties to format currency,
 * TODO: add loading to generate button
-* 
-* look into react-hook-form
+* look into react-hook-form (if not used put nuqs in provider file and move exchange-equry to hook)
 */
 
 'use client';

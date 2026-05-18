@@ -11,7 +11,6 @@ import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates, Va
 import type { BuildQueryProps, CardProps } from "@/types/build-preferences";
 import { getDefaultCard } from "./general";
 
-//maybe move to const file
 const buildQueryParsers = {
   [FORM_FIELDS.country]: parseAsString.withDefault(DEFAULT_COUNTRY.code)
     .withOptions({ history: 'push' }),

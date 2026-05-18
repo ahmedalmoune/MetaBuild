@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.100.10",
+    "axios": "^1.16.1",
     "bootstrap": "^5.3.8",
     "country-flag-icons": "^1.6.17",
     "next": "^16.2.6",

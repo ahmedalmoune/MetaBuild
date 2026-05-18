@@ -8,6 +8,7 @@
 import { FORM_FIELDS } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString } from "nuqs";
 
+// Represents the 'names' for the form fields, URL query params, and API request body
 export type FormFieldsProps = {
   country: string;
   budget: string;
@@ -32,7 +33,7 @@ export type CardProps = {
   default?: boolean;
 };
 
-// Represents a group of radio or checkbox cards for a specific requirement e.g. resolution
+// Represents a group of radio or checkbox cards for a specific requirement e.g. build resolution
 export type CardsGroupProps = {
   type: "checkbox" | "radio";
   heading: string;
@@ -46,9 +47,10 @@ export type CountryProps = {
   value: string;
   currency: string;
   locale: string;
-  exchangeRate: number; // Based on USD
+  exchangeRate: number;
   default?: boolean; 
 }
+export type ExchangeRates = Record<CountryProps['currency'], CountryProps['exchangeRate']>;
 
 
 // Represents the payload sent to the server API

@@ -12,7 +12,7 @@ import { useBuildQueryState } from '@/utils/build-query';
 import { useEffect, useCallback } from 'react';
 import { toast } from 'sonner';
 import { ERROR_MESSAGES } from '@/constants/general';
-import { useExchangeRates } from '@/contexts/use-exchange-rates';
+import { useExchangeRates } from '@/hooks/use-exchange-rates';
 
 export default function BudgetSlider() {
   const [queryState, setQueryState] = useBuildQueryState();

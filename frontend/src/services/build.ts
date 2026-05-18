@@ -6,7 +6,7 @@
 */
 
 import type { BuildApiProps } from "@/types/build-preferences";
-import { API_ENDPOINT } from "@/constants/general";
+import { API_ENDPOINTS } from "@/constants/general";
 import { FORM_FIELDS } from "@/constants/build-preferences";
 
 
@@ -25,7 +25,7 @@ export async function submitBuildForm(event: React.SubmitEvent<HTMLFormElement>)
 
   alert(JSON.stringify(payload));
 
-  const res = await fetch(API_ENDPOINT.baseUrl, {
+  const res = await fetch(API_ENDPOINTS.baseUrl, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),

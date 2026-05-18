@@ -7,7 +7,7 @@
 
 import type { BudgetProps, CardsGroupProps, FormFieldsProps, CountryProps } from "@/types/build-preferences";
 
-// Names for the form fields, URL query params, and API request body
+// The names for the form fields, URL query params, and API request body
 export const FORM_FIELDS = {
   country: "country",
   budget: "budget",
@@ -109,9 +109,8 @@ export const FEATURES = {
   ]
 } as const satisfies CardsGroupProps;
 
-
 export const COUNTRIES = [
-  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 1.38, locale: 'en-AU' },
+  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 11.38, locale: 'en-AU' },
   { code: 'AT', value: 'Austria', currency:        'EUR', exchangeRate: 0.85, locale: 'de-AT' },
   { code: 'BE', value: 'Belgium', currency:        'EUR', exchangeRate: 0.85, locale: 'nl-BE' },
   { code: 'CA', value: 'Canada', currency:         'CAD', exchangeRate: 1.37, locale: 'en-CA' },

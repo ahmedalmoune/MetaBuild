@@ -35,21 +35,18 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <NuqsAdapter>
-          <Providers>
+        <Providers>
+          <NuqsAdapter>
             <main>{children}</main>
-          </Providers>
-        </NuqsAdapter>
+          </NuqsAdapter>
 
-        <footer className="text-center pb-4"> 
-          <span className="bg-secondary px-2 py-1 rounded text-white"> 
-            Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
-            className="text-white"> {META.author}</a>
-          </span> 
-        </footer>
-
-        <Toaster position="bottom-right" />
-        <BootstrapClient />
+          <footer className="text-center pb-4"> 
+            <span className="bg-secondary px-2 py-1 rounded text-white"> 
+              Made by <a href={META.authorUrl} target="_blank" rel="noopener noreferrer" 
+              className="text-white"> {META.author}</a>
+            </span> 
+          </footer>
+        </Providers>
       </body>
     </html>
   );
