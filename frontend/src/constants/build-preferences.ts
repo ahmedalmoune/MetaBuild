@@ -110,7 +110,7 @@ export const FEATURES = {
 } as const satisfies CardsGroupProps;
 
 export const COUNTRIES = [
-  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 11.38, locale: 'en-AU' },
+  { code: 'AU', value: 'Australia', currency:      'AUD', exchangeRate: 1.38, locale: 'en-AU' },
   { code: 'AT', value: 'Austria', currency:        'EUR', exchangeRate: 0.85, locale: 'de-AT' },
   { code: 'BE', value: 'Belgium', currency:        'EUR', exchangeRate: 0.85, locale: 'nl-BE' },
   { code: 'CA', value: 'Canada', currency:         'CAD', exchangeRate: 1.37, locale: 'en-CA' },

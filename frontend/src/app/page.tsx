@@ -5,6 +5,7 @@
 * Date: 5/3/2026
 * TODO: add loading to generate button
 * look into react-hook-form (if not used put nuqs in provider file and move exchange-equry to hook)
+* maybe change url for currency to reflect countries currency
 */
 
 'use client';
