@@ -45,8 +45,10 @@ export default function Home() {
       // Delete duplicate valid keys
       for (const key of validKeys) {
         const allValues = urlParams.getAll(key);
+        // NOTE: may need to change this logic if more fields are added
         if (allValues.length > 1) {
-          if (key === FORM_FIELDS.purpose || key === FORM_FIELDS.resolution || key === FORM_FIELDS.budget) {
+          if (key === FORM_FIELDS.purpose || key === FORM_FIELDS.resolution || key === FORM_FIELDS.budget || 
+              key === FORM_FIELDS.country) {
             urlParams.delete(key);
             urlParams.set(key, allValues[0]);
             urlChanged = true;

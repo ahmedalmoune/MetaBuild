@@ -13,7 +13,7 @@ import { getDefaultCard } from "./general";
 
 const buildQueryParsers = {
   [FORM_FIELDS.country]: parseAsString.withDefault(DEFAULT_COUNTRY.code)
-    .withOptions({ history: 'push' }),
+    .withOptions({ history: 'replace' }),
   [FORM_FIELDS.budget]: parseAsInteger.withDefault(BUDGET.default).withOptions({ history: 'push' }),
   [FORM_FIELDS.purpose]: parseAsString.withDefault(getDefaultCard<CardProps["value"]>(PURPOSES))
     .withOptions({ history: 'push' }),

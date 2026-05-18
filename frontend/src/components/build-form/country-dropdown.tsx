@@ -6,6 +6,7 @@
 * TODO: Finish this
 */
 
+'use client';
 import { COUNTRIES, DEFAULT_COUNTRY, FORM_FIELDS } from "@/constants/build-preferences";
 import { ERROR_MESSAGES } from "@/constants/general";
 import styles from "@/styles/page.module.css";
