@@ -10,7 +10,7 @@ import type { ExchangeRates } from "@/types/build-preferences";
 import { toast } from "sonner";
 import { ERROR_MESSAGES, API_ENDPOINTS } from "@/constants/general";
 import { roundNumber } from "./general";
-import  axios  from "axios";
+import axios from "axios";
 
 
 // Returns fallback exchange rates
