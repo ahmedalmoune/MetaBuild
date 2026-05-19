@@ -9,14 +9,14 @@
 'use client';
 import styles from "@/styles/page.module.css";
 import type { CardsGroupProps, CardProps } from "@/types/build-preferences"; 
-import { useBuildQueryState, getQueryValue } from "@/utils/build-query";
+import { useBuildQuery, getQueryValue } from "@/hooks/use-build-query";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { ERROR_MESSAGES } from "@/constants/general";
 
 export default function OptionsCardsGroup({CardsGroup}: {CardsGroup: CardsGroupProps}) {
   
-  const [queryState, setQueryState] = useBuildQueryState();
+  const [queryState, setQueryState] = useBuildQuery();
 
   // Reset query state if it has an invalid value
   useEffect(() => {

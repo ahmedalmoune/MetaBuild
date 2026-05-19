@@ -8,14 +8,14 @@
 'use client';
 import {formatCurrency} from '@/utils/general'
 import { BUDGET, FORM_FIELDS, DEFAULT_COUNTRY } from '@/constants/build-preferences'
-import { useBuildQueryState } from '@/utils/build-query';
+import { useBuildQuery } from '@/hooks/use-build-query';
 import { useEffect, useCallback } from 'react';
 import { toast } from 'sonner';
 import { ERROR_MESSAGES } from '@/constants/general';
 import { useExchangeRates } from '@/hooks/use-exchange-rates';
 
 export default function BudgetSlider() {
-  const [queryState, setQueryState] = useBuildQueryState();
+  const [queryState, setQueryState] = useBuildQuery();
   const { data: rates } = useExchangeRates();
 
 

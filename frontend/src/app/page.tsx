@@ -1,10 +1,11 @@
 /*
 * File: page.tsx
 * Description: Homepage of the app where the user can change build preferences, generate builds, and view the results.
+* We are using nuqs to manage the form state and URL query parameters as opposed to react-hook-form to have granular 
+* control over the URL.
 * Author: Ahmed Almoune
 * Date: 5/3/2026
 * TODO: add loading to generate button
-* look into react-hook-form (if not used put nuqs in provider file and move exchange-equry to hook)
 * maybe change url for currency to reflect countries currency
 */
 

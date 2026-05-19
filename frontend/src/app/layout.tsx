@@ -9,7 +9,6 @@ import "@/styles/globals.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Geist, Geist_Mono } from "next/font/google";
 import { META } from '@/constants/general';
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import type { Metadata } from "next";
 import { Providers } from './providers';
 
@@ -33,10 +32,8 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>
-          <NuqsAdapter>
-            <main>{children}</main>
-          </NuqsAdapter>
+        <Providers>  
+          <main>{children}</main>
 
           <footer className="text-center pb-4"> 
             <span className="bg-secondary px-2 py-1 rounded text-white"> 

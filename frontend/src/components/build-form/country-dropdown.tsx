@@ -10,13 +10,13 @@
 import { COUNTRIES, DEFAULT_COUNTRY, FORM_FIELDS } from "@/constants/build-preferences";
 import { ERROR_MESSAGES } from "@/constants/general";
 import styles from "@/styles/page.module.css";
-import { useBuildQueryState } from "@/utils/build-query";
+import { useBuildQuery } from "@/hooks/use-build-query";
 import * as Flags from "country-flag-icons/react/3x2";
 import { useCallback, useEffect } from "react";
 import { toast } from "sonner";
 
 export default function CountryDropdown() {
-  const [queryState, setQueryState] = useBuildQueryState();
+  const [queryState, setQueryState] = useBuildQuery();
   const CountryFlag = Flags[queryState[FORM_FIELDS.country] as keyof typeof Flags] || Flags[DEFAULT_COUNTRY.code];
 
   const validateCountry = useCallback(() => {

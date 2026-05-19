@@ -9,7 +9,7 @@
 import { BUDGET, FEATURES, PURPOSES, RESOLUTIONS, FORM_FIELDS, DEFAULT_COUNTRY } from "@/constants/build-preferences";
 import { parseAsInteger, parseAsNativeArrayOf, parseAsString, useQueryStates, Values, UseQueryStatesReturn } from "nuqs";
 import type { BuildQueryProps, CardProps } from "@/types/build-preferences";
-import { getDefaultCard } from "./general";
+import { getDefaultCard } from "../utils/general";
 
 const buildQueryParsers = {
   [FORM_FIELDS.country]: parseAsString.withDefault(DEFAULT_COUNTRY.code)
@@ -30,6 +30,6 @@ export function getQueryValue<T extends typeof BUDGET.default | CardProps["value
 }
 
 // Hook to manage query state
-export function useBuildQueryState(): UseQueryStatesReturn<BuildQueryProps> {
+export function useBuildQuery(): UseQueryStatesReturn<BuildQueryProps> {
   return useQueryStates(buildQueryParsers);
 }
